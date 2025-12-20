@@ -4,6 +4,14 @@ let agentMode = false;
 let agentMessages = [];
 let isAgentStreaming = false;
 
+// Vercel proxy URL
+const AGENT_VERCEL_PROXY_URL = '/api/proxy';
+
+// Check if running on Vercel (local copy for agent.js)
+function isVercelHost() {
+    return window.location.hostname.includes('vercel.app');
+}
+
 // ============ 增强的 System Prompt ============
 function buildSystemPrompt() {
     // 获取文档统计
@@ -346,7 +354,7 @@ async function streamResponse() {
     }
 
     // Check if using Vercel proxy
-    const useVercelProxy = settings.useProxy && typeof isVercel === 'function' && isVercel();
+    const useVercelProxy = settings.useProxy && isVercelHost();
     const useLocalProxy = settings.useProxy && !useVercelProxy;
 
     isAgentStreaming = true;
@@ -378,7 +386,7 @@ async function streamResponse() {
             // Vercel proxy: send request through /api/proxy
             // Note: streaming won't work through proxy, disable it
             body.stream = false;
-            response = await fetch('/api/proxy', {
+            response = await fetch(AGENT_VERCEL_PROXY_URL, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
