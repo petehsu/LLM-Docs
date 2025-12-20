@@ -184,6 +184,8 @@ const I18N = {
         agentWelcomeDesc: 'Ask me anything about LLM APIs, or let me help you write code.',
         agentPlaceholder: 'Ask me anything...',
         agentError: 'Error',
+        corsError: 'CORS error: Please enable proxy in Settings or run proxy-server.py locally.',
+        corsErrorGitHub: 'CORS error: AI Agent is not available on GitHub Pages. Please clone the repo and run locally with proxy-server.py.',
         codePreview: 'Code Preview',
     },
     zh: {
@@ -352,6 +354,8 @@ const I18N = {
         agentWelcomeDesc: '问我任何关于大模型 API 的问题，或者让我帮你写代码。',
         agentPlaceholder: '问我任何问题...',
         agentError: '错误',
+        corsError: 'CORS 跨域错误：请在设置中启用代理，或本地运行 proxy-server.py。',
+        corsErrorGitHub: 'CORS 跨域错误：AI Agent 在 GitHub Pages 上不可用。请克隆仓库并在本地运行 proxy-server.py。',
         codePreview: '代码预览',
     },
     ja: {

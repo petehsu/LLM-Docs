@@ -1,0 +1,5 @@
+name = "llm-docs-proxy"
+main = "proxy.js"
+compatibility_date = "2024-01-01"
+
+# 部署命令: npx wrangler deploy
