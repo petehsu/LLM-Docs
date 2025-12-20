@@ -451,7 +451,19 @@ async function streamResponse() {
         await handleToolCalls(fullResponse, msgDiv);
 
     } catch (err) {
-        contentDiv.innerHTML = `<span class="error-msg">${t('agentError')}: ${err.message}</span>`;
+        let errorMsg = err.message;
+        
+        // 检测 CORS 错误
+        if (err.message.includes('Failed to fetch') || err.name === 'TypeError') {
+            const isGitHubPages = window.location.hostname.includes('github.io');
+            if (isGitHubPages) {
+                errorMsg = t('corsErrorGitHub') || 'CORS error: AI Agent requires a proxy server. Please run locally with proxy-server.py or use Settings to configure a CORS-enabled API endpoint.';
+            } else {
+                errorMsg = t('corsError') || 'CORS error: Please enable proxy in Settings or run proxy-server.py locally.';
+            }
+        }
+        
+        contentDiv.innerHTML = `<span class="error-msg">${t('agentError')}: ${errorMsg}</span>`;
     }
 
     isAgentStreaming = false;
