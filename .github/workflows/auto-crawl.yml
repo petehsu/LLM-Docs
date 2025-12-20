@@ -1,9 +1,9 @@
 name: Auto Crawl & Deploy
 
 on:
-  # 每天 UTC 时间 2:00 运行（北京时间 10:00）
+  # 每 12 小时运行一次（UTC 2:00 和 14:00）
   schedule:
-    - cron: '0 2 * * *'
+    - cron: '0 2,14 * * *'
   # 手动触发
   workflow_dispatch:
   # 推送到 main 分支时部署

@@ -111,6 +111,12 @@ const I18N = {
         refresh: 'Refresh',
         today: 'Today',
         yesterday: 'Yesterday',
+        crawlDashboard: 'Crawl Dashboard',
+        nextCrawl: 'Next Crawl',
+        systemHealth: 'System Health',
+        vendorsHealthy: 'vendors healthy',
+        crawlSchedule: 'Schedule',
+        vendorHealth: 'Vendor Status',
         
         // MCP page
         mcpSetup: 'MCP Setup',
@@ -331,6 +337,12 @@ const I18N = {
         refresh: '刷新',
         today: '今天',
         yesterday: '昨天',
+        crawlDashboard: '爬取仪表盘',
+        nextCrawl: '下次爬取',
+        systemHealth: '系统健康度',
+        vendorsHealthy: '个厂商正常',
+        crawlSchedule: '爬取计划',
+        vendorHealth: '厂商状态',
         
         // MCP page
         mcpSetup: 'MCP 配置',
@@ -551,6 +563,12 @@ const I18N = {
         refresh: '更新',
         today: '今日',
         yesterday: '昨日',
+        crawlDashboard: 'クロールダッシュボード',
+        nextCrawl: '次回クロール',
+        systemHealth: 'システム健全性',
+        vendorsHealthy: 'ベンダー正常',
+        crawlSchedule: 'スケジュール',
+        vendorHealth: 'ベンダー状態',
         
         // MCP page
         mcpSetup: 'MCP設定',
