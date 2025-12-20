@@ -51,6 +51,24 @@ const I18N = {
         docCount: 'Documents',
         scriptDesc: 'Download script',
         
+        // Script categories
+        exploreScripts: 'Explore Scripts',
+        exploreScriptsDesc: 'Analyze documentation structure before writing crawlers',
+        testScripts: 'Test Scripts',
+        testScriptsDesc: 'Test URL formats and API endpoints',
+        utilScripts: 'Utility Scripts',
+        utilScriptsDesc: 'Verify downloads, fix errors, parse data',
+        coreScripts: 'Core Scripts',
+        coreScriptsDesc: 'Build site, MCP server, auto crawler',
+        target: 'Target',
+        
+        // Script detail page
+        scriptInfo: 'Script Info',
+        category: 'Category',
+        description: 'Description',
+        sourceCode: 'Source Code',
+        lines: 'Lines',
+        
         // Auto crawl
         autoCrawl: 'Auto crawl',
         manualCrawl: 'Manual crawl',
@@ -132,6 +150,41 @@ const I18N = {
         searchNavigate: 'Navigate',
         searchSelect: 'Select',
         searchClose: 'Close',
+        
+        // Settings
+        settings: 'Settings',
+        settingsTitle: 'API Settings',
+        settingsDesc: 'Configure your LLM API providers to use the Agent feature.',
+        selectProvider: 'Select Provider',
+        apiConfiguration: 'API Configuration',
+        apiKey: 'API Key',
+        enterApiKey: 'Enter your API key',
+        apiKeyHint: 'Your API key is stored locally and never sent to our servers.',
+        selectModel: 'Model',
+        baseUrl: 'Base URL',
+        baseUrlHint: 'Custom API endpoint (optional)',
+        baseUrlFixed: 'API endpoint is fixed for this provider',
+        modelId: 'Model ID',
+        modelName: 'Model Name',
+        saveSettings: 'Save Settings',
+        settingsSaved: 'Settings saved!',
+        testConnection: 'Test Connection',
+        testApi: 'Test API',
+        testing: 'Testing...',
+        connectionSuccess: 'Connection successful!',
+        connectionFailed: 'Connection failed',
+        connectionError: 'Connection error',
+        noApiKey: 'Please enter an API key first',
+        configureApiFirst: 'Please configure your API key first',
+        corsWarning: 'Note: Most LLM APIs do not support direct browser calls due to CORS restrictions. Use a proxy server or the Agent feature may not work directly.',
+        
+        // Agent
+        openAgent: 'Open Agent',
+        agentWelcome: 'Hi, I\'m your AI Assistant',
+        agentWelcomeDesc: 'Ask me anything about LLM APIs, or let me help you write code.',
+        agentPlaceholder: 'Ask me anything...',
+        agentError: 'Error',
+        codePreview: 'Code Preview',
     },
     zh: {
         search: '搜索文档...',
@@ -164,6 +217,24 @@ const I18N = {
         dependencies: '依赖',
         docCount: '文档数',
         scriptDesc: '下载脚本',
+        
+        // Script categories
+        exploreScripts: '探测脚本',
+        exploreScriptsDesc: '在编写爬虫前分析文档结构',
+        testScripts: '测试脚本',
+        testScriptsDesc: '测试 URL 格式和 API 端点',
+        utilScripts: '工具脚本',
+        utilScriptsDesc: '验证下载、修复错误、解析数据',
+        coreScripts: '核心脚本',
+        coreScriptsDesc: '构建网站、MCP 服务器、自动爬虫',
+        target: '目标',
+        
+        // Script detail page
+        scriptInfo: '脚本信息',
+        category: '分类',
+        description: '说明',
+        sourceCode: '源代码',
+        lines: '行数',
         
         // Auto crawl
         autoCrawl: '自动爬取',
@@ -247,6 +318,41 @@ const I18N = {
         searchNavigate: '导航',
         searchSelect: '选择',
         searchClose: '关闭',
+        
+        // Settings
+        settings: '设置',
+        settingsTitle: 'API 设置',
+        settingsDesc: '配置你的大模型 API 以使用 Agent 功能。',
+        selectProvider: '选择提供商',
+        apiConfiguration: 'API 配置',
+        apiKey: 'API 密钥',
+        enterApiKey: '输入你的 API 密钥',
+        apiKeyHint: '你的 API 密钥仅存储在本地，不会发送到我们的服务器。',
+        selectModel: '模型',
+        baseUrl: '接口地址',
+        baseUrlHint: '自定义 API 端点（可选）',
+        baseUrlFixed: '此提供商的接口地址不可修改',
+        modelId: '模型 ID',
+        modelName: '模型名称',
+        saveSettings: '保存设置',
+        settingsSaved: '设置已保存！',
+        testConnection: '测试连接',
+        testApi: '测试 API',
+        testing: '测试中...',
+        connectionSuccess: '连接成功！',
+        connectionFailed: '连接失败',
+        connectionError: '连接错误',
+        noApiKey: '请先输入 API 密钥',
+        configureApiFirst: '请先配置你的 API 密钥',
+        corsWarning: '注意：由于浏览器跨域限制，大多数 LLM API 不支持直接从浏览器调用。需要使用代理服务器，或者 Agent 功能可能无法直接使用。',
+        
+        // Agent
+        openAgent: '打开 Agent',
+        agentWelcome: '你好，我是你的 AI 助手',
+        agentWelcomeDesc: '问我任何关于大模型 API 的问题，或者让我帮你写代码。',
+        agentPlaceholder: '问我任何问题...',
+        agentError: '错误',
+        codePreview: '代码预览',
     },
     ja: {
         search: 'ドキュメントを検索...',
@@ -279,6 +385,24 @@ const I18N = {
         dependencies: '依存関係',
         docCount: 'ドキュメント数',
         scriptDesc: 'ダウンロードスクリプト',
+        
+        // Script categories
+        exploreScripts: '探索スクリプト',
+        exploreScriptsDesc: 'クローラー作成前にドキュメント構造を分析',
+        testScripts: 'テストスクリプト',
+        testScriptsDesc: 'URL形式とAPIエンドポイントをテスト',
+        utilScripts: 'ユーティリティスクリプト',
+        utilScriptsDesc: 'ダウンロード検証、エラー修正、データ解析',
+        coreScripts: 'コアスクリプト',
+        coreScriptsDesc: 'サイト構築、MCPサーバー、自動クローラー',
+        target: 'ターゲット',
+        
+        // Script detail page
+        scriptInfo: 'スクリプト情報',
+        category: 'カテゴリ',
+        description: '説明',
+        sourceCode: 'ソースコード',
+        lines: '行数',
         
         // Auto crawl
         autoCrawl: '自動クロール',
@@ -362,6 +486,41 @@ const I18N = {
         searchNavigate: 'ナビゲート',
         searchSelect: '選択',
         searchClose: '閉じる',
+        
+        // Settings
+        settings: '設定',
+        settingsTitle: 'API 設定',
+        settingsDesc: 'Agent機能を使用するためにLLM APIを設定します。',
+        selectProvider: 'プロバイダーを選択',
+        apiConfiguration: 'API 設定',
+        apiKey: 'APIキー',
+        enterApiKey: 'APIキーを入力',
+        apiKeyHint: 'APIキーはローカルに保存され、サーバーには送信されません。',
+        selectModel: 'モデル',
+        baseUrl: 'ベースURL',
+        baseUrlHint: 'カスタムAPIエンドポイント（オプション）',
+        baseUrlFixed: 'このプロバイダーのAPIエンドポイントは固定です',
+        modelId: 'モデルID',
+        modelName: 'モデル名',
+        saveSettings: '設定を保存',
+        settingsSaved: '設定を保存しました！',
+        testConnection: '接続テスト',
+        testApi: 'APIをテスト',
+        testing: 'テスト中...',
+        connectionSuccess: '接続成功！',
+        connectionFailed: '接続失敗',
+        connectionError: '接続エラー',
+        noApiKey: '先にAPIキーを入力してください',
+        configureApiFirst: '先にAPIキーを設定してください',
+        corsWarning: '注意：ブラウザのCORS制限により、ほとんどのLLM APIはブラウザから直接呼び出すことができません。プロキシサーバーを使用するか、Agent機能が直接動作しない場合があります。',
+        
+        // Agent
+        openAgent: 'Agentを開く',
+        agentWelcome: 'こんにちは、AIアシスタントです',
+        agentWelcomeDesc: 'LLM APIについて何でも聞いてください。コードを書くお手伝いもします。',
+        agentPlaceholder: '何でも聞いてください...',
+        agentError: 'エラー',
+        codePreview: 'コードプレビュー',
     }
 };
 
