@@ -16,23 +16,19 @@ const EVENT_COLORS = {
     'skip': '#6b7280',
 };
 
-// 格式化时间戳
+// 格式化时间戳 - 精准的年月日时分秒 UTC 格式
 function formatEventTime(isoTime) {
     const date = new Date(isoTime);
-    const now = new Date();
-    const diffMs = now - date;
-    const diffDays = Math.floor(diffMs / 86400000);
     
-    const timeStr = date.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
-    const dateStr = date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+    // 格式化为 YYYY-MM-DD HH:mm:ss UTC
+    const year = date.getUTCFullYear();
+    const month = String(date.getUTCMonth() + 1).padStart(2, '0');
+    const day = String(date.getUTCDate()).padStart(2, '0');
+    const hours = String(date.getUTCHours()).padStart(2, '0');
+    const minutes = String(date.getUTCMinutes()).padStart(2, '0');
+    const seconds = String(date.getUTCSeconds()).padStart(2, '0');
     
-    if (diffDays === 0) {
-        return `${t('today')} ${timeStr}`;
-    } else if (diffDays === 1) {
-        return `${t('yesterday')} ${timeStr}`;
-    } else {
-        return `${dateStr} ${timeStr}`;
-    }
+    return `${year}-${month}-${day} ${hours}:${minutes}:${seconds} UTC`;
 }
 
 // 渲染事件日志页面
