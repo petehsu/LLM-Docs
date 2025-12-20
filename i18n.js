@@ -40,6 +40,7 @@ const I18N = {
         // Code copy
         copy: 'Copy',
         copied: 'Copied!',
+        copyAll: 'Copy All',
         
         // Doc stats
         views: 'views',
@@ -265,6 +266,7 @@ const I18N = {
         selectLanguage: '语言',
         copy: '复制',
         copied: '已复制!',
+        copyAll: '复制全文',
         techDocsTitle: '技术文档',
         techDocsDesc: '项目文档和爬虫脚本，用于下载各家大模型 API 文档。',
         projectDocs: '项目文档',
@@ -484,6 +486,7 @@ const I18N = {
         selectLanguage: '言語',
         copy: 'コピー',
         copied: 'コピー済み!',
+        copyAll: '全文コピー',
         techDocsTitle: '技術ドキュメント',
         techDocsDesc: 'プロジェクトドキュメントとクローラースクリプト。',
         projectDocs: 'プロジェクトドキュメント',

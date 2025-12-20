@@ -22,7 +22,7 @@ function renderAboutPage() {
             <div class="about-info">
                 <h2>LLM Docs</h2>
                 <p class="about-tagline">${t('aboutTagline')}</p>
-                <p class="about-built">${t('builtOn')} 2024-12-19</p>
+                <p class="about-built">${t('builtOn')} 2025-12-19</p>
             </div>
         </div>
         

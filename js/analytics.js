@@ -19,15 +19,68 @@ let firebaseDb = null;
 let currentSessionId = null;
 let analyticsDocPath = null;
 let onlineCountCallback = null;
+let networkTimeOffset = 0; // 网络时间与本地时间的偏移量（毫秒）
 
 // 生成唯一会话 ID
 function generateSessionId() {
-    return 'sess_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
+    return 'sess_' + Date.now() + '_' + Math.random().toString(36).substring(2, 11);
+}
+
+// 获取网络时间（使用 worldtimeapi.org）
+async function fetchNetworkTime() {
+    const apis = [
+        'https://worldtimeapi.org/api/timezone/Etc/UTC',
+        'https://timeapi.io/api/Time/current/zone?timeZone=UTC'
+    ];
+    
+    for (const api of apis) {
+        try {
+            const localBefore = Date.now();
+            const response = await fetch(api, { timeout: 5000 });
+            const localAfter = Date.now();
+            const data = await response.json();
+            
+            let serverTime;
+            if (api.includes('worldtimeapi')) {
+                serverTime = new Date(data.utc_datetime).getTime();
+            } else {
+                serverTime = new Date(data.dateTime).getTime();
+            }
+            
+            // 计算网络延迟的一半作为补偿
+            const latency = (localAfter - localBefore) / 2;
+            const localMid = localBefore + latency;
+            
+            // 计算偏移量
+            networkTimeOffset = serverTime - localMid;
+            console.log('Network time synced, offset:', networkTimeOffset, 'ms');
+            return true;
+        } catch (error) {
+            console.warn('Failed to fetch time from', api, error);
+        }
+    }
+    
+    console.warn('All time APIs failed, using local time');
+    return false;
+}
+
+// 获取精准的当前时间戳
+function getAccurateTimestamp() {
+    return Date.now() + networkTimeOffset;
+}
+
+// 格式化精准时间为字符串（UTC）
+function formatAccurateTime(timestamp) {
+    const date = new Date(timestamp || getAccurateTimestamp());
+    return date.toISOString().replace('T', ' ').substring(0, 19) + ' UTC';
 }
 
 // 初始化 Firebase
 async function initFirebaseAnalytics() {
     try {
+        // 先同步网络时间
+        await fetchNetworkTime();
+        
         // 动态加载 Firebase SDK
         const { initializeApp } = await import('https://www.gstatic.com/firebasejs/10.7.0/firebase-app.js');
         const { getDatabase, ref, set, onValue, onDisconnect, increment, serverTimestamp, get } = await import('https://www.gstatic.com/firebasejs/10.7.0/firebase-database.js');
@@ -67,7 +120,6 @@ async function initFirebaseAnalytics() {
 function registerPresence() {
     if (!firebaseDb || !currentSessionId) return;
     
-    const { ref, set, onDisconnect, serverTimestamp, onValue } = window;
     const presenceRef = firebaseRef(firebaseDb, `presence/${currentSessionId}`);
     const connectedRef = firebaseRef(firebaseDb, '.info/connected');
     
@@ -76,7 +128,7 @@ function registerPresence() {
             // 设置在线状态
             firebaseSet(presenceRef, {
                 online: true,
-                lastSeen: Date.now(),
+                lastSeen: getAccurateTimestamp(),
                 page: location.hash || '#'
             });
             
@@ -90,7 +142,7 @@ function registerPresence() {
         if (firebaseDb && currentSessionId) {
             firebaseSet(presenceRef, {
                 online: true,
-                lastSeen: Date.now(),
+                lastSeen: getAccurateTimestamp(),
                 page: location.hash || '#'
             });
         }
@@ -163,15 +215,14 @@ function updateTotalVisitsUI(count) {
 async function postComment(content, nickname) {
     if (!firebaseDb || !content.trim()) return null;
     
-    const commentsRef = firebaseRef(firebaseDb, 'comments');
-    const commentId = 'msg_' + Date.now() + '_' + Math.random().toString(36).substring(2, 9);
+    const commentId = 'msg_' + getAccurateTimestamp() + '_' + Math.random().toString(36).substring(2, 9);
     const commentRef = firebaseRef(firebaseDb, `comments/${commentId}`);
     
     const comment = {
         id: commentId,
         content: content.trim().substring(0, 500), // 限制500字
         nickname: (nickname || '').trim().substring(0, 20) || getRandomNickname(),
-        timestamp: Date.now(),
+        timestamp: getAccurateTimestamp(),
         page: location.hash || '#'
     };
     
@@ -275,7 +326,7 @@ async function trackPageView(docPath) {
             // 进入新文档
             analyticsDocPath = docPath;
             const readingRef = firebaseRef(firebaseDb, `reading/${normalizedPath}/${currentSessionId}`);
-            await firebaseSet(readingRef, { time: Date.now() });
+            await firebaseSet(readingRef, { time: getAccurateTimestamp() });
             firebaseOnDisconnect(readingRef).remove();
         }
         
@@ -367,3 +418,6 @@ window.postComment = postComment;
 window.getComments = getComments;
 window.watchComments = watchComments;
 window.formatCommentTime = formatCommentTime;
+window.getAccurateTimestamp = getAccurateTimestamp;
+window.formatAccurateTime = formatAccurateTime;
+window.fetchNetworkTime = fetchNetworkTime;
