@@ -191,19 +191,21 @@ function getApiUrl(baseUrl, useProxy = false) {
 // Get saved settings
 function getSettings() {
     const saved = localStorage.getItem('llm-settings');
-    return saved
+    const settings = saved
         ? JSON.parse(saved)
         : {
               provider: 'openai',
               apiKeys: {},
               selectedModels: {},
-              useProxy: true, // 默认启用代理
               customConfig: {
                   baseUrl: '',
                   modelId: '',
                   modelName: '',
               },
           };
+    // 强制启用代理
+    settings.useProxy = true;
+    return settings;
 }
 
 // Save settings
@@ -250,21 +252,6 @@ function renderSettingsPage() {
                 <div class="config-form" id="config-form">
                     ${renderConfigForm(settings)}
                 </div>
-            </div>
-            
-            <div class="settings-section" id="proxy-config">
-                <h2>${t('proxySettings') || 'Proxy Settings'}</h2>
-                <div class="proxy-toggle">
-                    <label class="toggle-switch">
-                        <input type="checkbox" id="use-proxy" ${settings.useProxy ? 'checked' : ''} onchange="toggleProxy(this.checked)">
-                        <span class="toggle-slider"></span>
-                    </label>
-                    <span class="toggle-label">${t('useProxy') || 'Use CORS Proxy'}</span>
-                </div>
-                <p class="form-hint">
-                    ${t('proxyHint') || 'Enable this to bypass CORS restrictions. Run <code>python3 proxy-server.py</code> first.'}
-                </p>
-                <div class="proxy-status" id="proxy-status"></div>
             </div>
             
             <div class="settings-section" id="test-connection">
