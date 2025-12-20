@@ -2523,3 +2523,56 @@ h3 { font-size: 18px; font-weight: 600; margin: 24px 0 12px; }
 .contact-list a {
     color: var(--accent-color);
 }
+
+/* ============ Page Title Row with Copy Button ============ */
+.page-title-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 8px;
+}
+
+.page-title-row h1 {
+    margin-bottom: 0;
+}
+
+.copy-page-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 14px;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-secondary);
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+.copy-page-btn:hover {
+    color: var(--text-primary);
+    border-color: var(--accent-color);
+    background: var(--bg-hover);
+}
+
+.copy-page-btn .icon {
+    width: 14px;
+    height: 14px;
+}
+
+@media (max-width: 768px) {
+    .page-title-row {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .copy-page-btn {
+        width: 100%;
+        justify-content: center;
+    }
+}

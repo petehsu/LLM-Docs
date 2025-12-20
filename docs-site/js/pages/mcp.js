@@ -108,6 +108,87 @@ function showToast(message) {
     }, 2000);
 }
 
+// 复制 MCP 页面全文
+function copyMcpPageContent() {
+    const mcpFullContent = `# MCP Server Integration
+
+## What is MCP?
+
+Model Context Protocol (MCP) is an open standard that enables AI assistants to securely access external data sources and tools. With our MCP server, AI assistants can search and read all 1600+ LLM API documents.
+
+## Installation
+
+\`\`\`bash
+# Install MCP SDK
+pip install mcp
+
+# Clone the repository (if not already)
+git clone https://github.com/petehsu/LLM-Docs.git
+cd LLM-Docs
+
+# Build docs index (required)
+python3 build_docs_site.py
+\`\`\`
+
+## Configuration
+
+### Kiro (.kiro/settings/mcp.json)
+${MCP_CONFIGS.kiro.content}
+
+### Claude Desktop
+${MCP_CONFIGS.claude.content}
+
+### Cursor (.cursor/mcp.json)
+${MCP_CONFIGS.cursor.content}
+
+### VS Code (.continue/config.json)
+${MCP_CONFIGS.vscode.content}
+
+## Available Tools
+
+| Tool | Description | Parameters |
+|------|-------------|------------|
+| list_vendors | List all LLM vendors with doc counts | - |
+| list_docs | List all documents for a vendor | vendor_id |
+| read_doc | Read full content of a document | vendor_id, doc_path |
+| search_docs | Search across all documentation | query, [vendor_id], [limit] |
+| get_doc_stats | Get collection statistics | - |
+
+## Usage Examples
+
+\`\`\`python
+# List all vendors
+list_vendors
+
+# Get OpenAI docs list  
+list_docs vendor_id="openai"
+
+# Read a specific document
+read_doc vendor_id="anthropic" doc_path="en/build-with-claude/vision.md"
+
+# Search for function calling docs
+search_docs query="function calling" limit=10
+
+# Get statistics
+get_doc_stats
+\`\`\`
+
+## Resource URIs
+
+\`\`\`
+llmdocs://openai
+llmdocs://anthropic
+llmdocs://anthropic/en/about-claude/pricing.md
+\`\`\`
+`;
+    
+    navigator.clipboard.writeText(mcpFullContent).then(() => {
+        showToast(t('copied'));
+    }).catch(err => {
+        console.error('Copy failed:', err);
+    });
+}
+
 // MCP 工具配置
 const MCP_TOOLS = [
     {
@@ -206,7 +287,12 @@ function renderMcpPage() {
             <span>${t('mcpSetup')}</span>
         </div>
         
-        <h1>${t('mcpTitle')}</h1>
+        <div class="page-title-row">
+            <h1>${t('mcpTitle')}</h1>
+            <button class="copy-page-btn" onclick="copyMcpPageContent()" title="${t('copyAll')}">
+                ${icon('copy')} ${t('copyAll')}
+            </button>
+        </div>
         <p class="lead">${t('mcpDesc')}</p>
         
         <div class="mcp-hero">
