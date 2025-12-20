@@ -182,6 +182,12 @@ function toggleAgentMode() {
     const messagesContainer = document.getElementById('agent-messages-container');
     const searchResults = document.getElementById('search-results-container');
 
+    // 空值检查
+    if (!searchWrapper || !agentBtn || !messagesContainer || !searchInput) {
+        console.warn('Agent UI elements not found');
+        return;
+    }
+
     if (agentMode) {
         // 进入 Agent 模式
         searchWrapper.classList.add('agent-mode');
@@ -329,10 +335,9 @@ async function streamResponse() {
         baseUrl = provider.baseUrl;
     }
 
-    // Use proxy if enabled
-    const actualBaseUrl = settings.useProxy && typeof getApiUrl === 'function' 
-        ? getApiUrl(baseUrl, true) 
-        : baseUrl;
+    // Check if using Vercel proxy
+    const useVercelProxy = settings.useProxy && typeof isVercel === 'function' && isVercel();
+    const useLocalProxy = settings.useProxy && !useVercelProxy;
 
     isAgentStreaming = true;
 
@@ -357,11 +362,37 @@ async function streamResponse() {
         const messages = [systemPrompt, ...agentMessages];
         const body = provider.formatRequest(messages, model);
 
-        const response = await fetch(`${actualBaseUrl}${endpoint}`, {
-            method: 'POST',
-            headers,
-            body: JSON.stringify(body),
-        });
+        let response;
+        
+        if (useVercelProxy) {
+            // Vercel proxy: send request through /api/proxy
+            // Note: streaming won't work through proxy, disable it
+            body.stream = false;
+            response = await fetch('/api/proxy', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    targetUrl: `${baseUrl}${endpoint}`,
+                    headers: headers,
+                    body: body,
+                }),
+            });
+        } else if (useLocalProxy) {
+            // Local proxy
+            const actualBaseUrl = getApiUrl(baseUrl, true);
+            response = await fetch(`${actualBaseUrl}${endpoint}`, {
+                method: 'POST',
+                headers,
+                body: JSON.stringify(body),
+            });
+        } else {
+            // Direct call
+            response = await fetch(`${baseUrl}${endpoint}`, {
+                method: 'POST',
+                headers,
+                body: JSON.stringify(body),
+            });
+        }
 
         if (!response.ok) {
             throw new Error(`API Error: ${response.status}`);
