@@ -1,0 +1,63 @@
+name: Auto Crawl & Deploy
+
+on:
+  # 每天 UTC 时间 2:00 运行（北京时间 10:00）
+  schedule:
+    - cron: '0 2 * * *'
+  # 手动触发
+  workflow_dispatch:
+  # 推送到 main 分支时部署
+  push:
+    branches: [main]
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+jobs:
+  crawl:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      
+      - name: Install dependencies
+        run: |
+          pip install requests beautifulsoup4 markdownify lxml
+      
+      - name: Run auto crawler
+        working-directory: docs-site/scripts
+        run: python auto_crawler.py --force
+        continue-on-error: true
+      
+      - name: Commit changes
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add -A
+          git diff --staged --quiet || git commit -m "🤖 Auto crawl: $(date +'%Y-%m-%d %H:%M')"
+          git push
+
+  deploy:
+    needs: crawl
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      
+      - name: Pull latest changes
+        run: git pull origin main
+      
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./docs-site
+          cname: ''  # 如果有自定义域名，填在这里
