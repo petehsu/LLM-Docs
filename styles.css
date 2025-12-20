@@ -2414,3 +2414,112 @@ h3 { font-size: 18px; font-weight: 600; margin: 24px 0 12px; }
     white-space: pre-wrap;
     word-break: break-word;
 }
+
+
+/* ============ About Page ============ */
+.about-hero {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    padding: 32px;
+    background: var(--bg-secondary);
+    border-radius: 12px;
+    margin-bottom: 32px;
+}
+
+.about-logo {
+    width: 80px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--accent-color);
+    border-radius: 16px;
+    color: #fff;
+    flex-shrink: 0;
+}
+
+.about-info h2 {
+    margin: 0 0 8px 0;
+    font-size: 24px;
+}
+
+.about-tagline {
+    margin: 0 0 8px 0;
+    color: var(--text-secondary);
+    font-size: 15px;
+}
+
+.about-built {
+    margin: 0;
+    font-size: 13px;
+    color: var(--text-tertiary);
+}
+
+.about-features-list {
+    padding-left: 24px;
+    margin: 16px 0;
+}
+
+.about-features-list li {
+    margin-bottom: 8px;
+    color: var(--text-primary);
+}
+
+.tech-stack-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 12px;
+    margin: 16px 0;
+}
+
+.tech-item {
+    padding: 16px;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+}
+
+.tech-item strong {
+    display: block;
+    font-size: 13px;
+    color: var(--text-tertiary);
+    margin-bottom: 4px;
+}
+
+.tech-item span {
+    font-size: 14px;
+    color: var(--text-primary);
+}
+
+.disclaimer-box {
+    padding: 20px;
+    background: var(--bg-secondary);
+    border-left: 4px solid var(--accent-color);
+    border-radius: 0 8px 8px 0;
+    margin: 16px 0;
+}
+
+.disclaimer-box p {
+    margin: 0 0 12px 0;
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+.disclaimer-box p:last-child {
+    margin-bottom: 0;
+}
+
+.contact-list {
+    list-style: none;
+    padding: 0;
+    margin: 16px 0;
+}
+
+.contact-list li {
+    margin-bottom: 8px;
+}
+
+.contact-list a {
+    color: var(--accent-color);
+}

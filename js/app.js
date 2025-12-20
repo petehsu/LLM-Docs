@@ -190,6 +190,13 @@ function handleHashChange() {
         return;
     }
     
+    // 关于页面
+    if (hash === 'about') {
+        renderAboutPage();
+        updateActiveNav('about');
+        return;
+    }
+    
     const parts = hash.split('/');
     const vendorId = parts[0];
     const docPath = parts.slice(1).join('/');
