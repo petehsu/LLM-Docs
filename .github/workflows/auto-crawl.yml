@@ -31,9 +31,12 @@ jobs:
           pip install requests beautifulsoup4 markdownify lxml
       
       - name: Run auto crawler
-        working-directory: docs-site/scripts
+        working-directory: scripts
         run: python auto_crawler.py --force
         continue-on-error: true
+      
+      - name: Build frontend
+        run: python scripts/build_frontend.py
       
       - name: Commit changes
         run: |
@@ -59,5 +62,5 @@ jobs:
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./docs-site
+          publish_dir: ./frontend
           cname: ''  # 如果有自定义域名，填在这里

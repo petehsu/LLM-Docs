@@ -1,0 +1,31 @@
+{
+  "name": "LLM Docs",
+  "version": "1.0.0",
+  "description": {
+    "en": "Unified LLM API Documentation Hub",
+    "zh": "大模型 API 文档聚合中心",
+    "ja": "LLM API ドキュメントハブ"
+  },
+  "github": "https://github.com/petehsu/LLM-Docs",
+  "defaultLanguage": "en",
+  "supportedLanguages": ["en", "zh", "ja"],
+  "buildDate": "2025-12-19",
+  "firebase": {
+    "enabled": true,
+    "projectId": "llm-docs-8c6a0",
+    "region": "asia-southeast1"
+  },
+  "features": {
+    "analytics": true,
+    "guestbook": true,
+    "search": true,
+    "download": true,
+    "mcp": true
+  },
+  "paths": {
+    "docs": "data/docs",
+    "logos": "data/logos",
+    "config": "data/config",
+    "scripts": "scripts"
+  }
+}
