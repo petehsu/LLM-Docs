@@ -73,6 +73,11 @@ function closeSearchResults() {
 
 // 处理搜索
 async function handleSearch(e) {
+    // 如果在 Agent 模式下，不执行搜索
+    if (typeof agentMode !== 'undefined' && agentMode) {
+        return;
+    }
+    
     const query = e.target.value.trim().toLowerCase();
     const container = document.getElementById('search-results-container');
     

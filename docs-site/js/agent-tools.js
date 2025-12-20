@@ -513,18 +513,32 @@ if __name__ == "__main__":
 function parseToolCalls(content) {
     const toolCalls = [];
     
-    // 匹配 <tool_call> 格式
-    const toolCallRegex = /<tool_call>\s*(\{[\s\S]*?\})\s*<\/tool_call>/g;
+    // 格式1: <tool_call>{"name": "xxx", "arguments": {...}}</tool_call>
+    const jsonRegex = /<tool_call>\s*(\{[\s\S]*?\})\s*<\/tool_call>/g;
     let match;
     
-    while ((match = toolCallRegex.exec(content)) !== null) {
+    while ((match = jsonRegex.exec(content)) !== null) {
         try {
             const call = JSON.parse(match[1]);
             if (call.name && AGENT_TOOLS[call.name]) {
                 toolCalls.push(call);
             }
         } catch (e) {
-            console.error('Failed to parse tool call:', e);
+            // 不是 JSON 格式，尝试其他格式
+        }
+    }
+    
+    // 格式2: <tool_call><tool_name>{...}</tool_name></tool_call>
+    // 或者: <tool_name>{...}</tool_name>
+    for (const toolName of Object.keys(AGENT_TOOLS)) {
+        const tagRegex = new RegExp(`<${toolName}>\\s*([\\s\\S]*?)\\s*<\\/${toolName}>`, 'g');
+        while ((match = tagRegex.exec(content)) !== null) {
+            try {
+                const args = JSON.parse(match[1]);
+                toolCalls.push({ name: toolName, arguments: args });
+            } catch (e) {
+                // 解析失败，跳过
+            }
         }
     }
     
