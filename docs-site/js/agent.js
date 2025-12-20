@@ -40,17 +40,18 @@ You can help users with:
 - Prompt engineering and optimization
 - Function calling and tool use implementation
 
-## Tool Usage
-You have access to these tools. To use a tool, wrap your call in <tool_call> tags:
+## Available Tools
+${toolDefs.map(t => `- **${t.name}**: ${t.description}`).join('\n')}
 
-${toolDefs.map(t => `### ${t.name}
-${t.description}
-Parameters: ${JSON.stringify(t.parameters, null, 2)}`).join('\n\n')}
+To use a tool, output JSON in this exact format:
+\`\`\`json
+{"tool": "tool_name", "args": {...}}
+\`\`\`
 
-Example tool call:
-<tool_call>
-{"name": "search_docs", "arguments": {"query": "function calling", "limit": 5}}
-</tool_call>
+Example:
+\`\`\`json
+{"tool": "search_docs", "args": {"query": "function calling", "limit": 5}}
+\`\`\`
 
 ## Response Guidelines
 1. Be concise and practical
@@ -61,12 +62,12 @@ Example tool call:
    - Rate limiting and error handling
    - Multi-language support
 4. For API comparisons, highlight key differences
-5. When asked about prompts, reference best practices from the documentation
+5. If you don't need to use a tool, just respond directly without tool calls
 
-## Code Execution
-When you write JavaScript code, it can be executed in the browser sandbox. Python code is for reference/download only.
+## Code Generation
+When asked to write a crawler, generate complete Python code directly. Don't use tools for code generation - just write the code in a code block.
 
-Remember: You have access to 1600+ documents across 10 LLM providers in 12 languages. Use search_docs to find relevant information.`;
+Remember: You have access to 1600+ documents across 10 LLM providers. Use search_docs to find relevant information when needed.`;
 }
 
 // 获取文档统计信息

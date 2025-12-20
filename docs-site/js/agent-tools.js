@@ -513,32 +513,36 @@ if __name__ == "__main__":
 function parseToolCalls(content) {
     const toolCalls = [];
     
-    // 格式1: <tool_call>{"name": "xxx", "arguments": {...}}</tool_call>
-    const jsonRegex = /<tool_call>\s*(\{[\s\S]*?\})\s*<\/tool_call>/g;
+    // 格式1: ```json {"tool": "xxx", "args": {...}} ```
+    const codeBlockRegex = /```json\s*(\{[\s\S]*?\})\s*```/g;
     let match;
     
-    while ((match = jsonRegex.exec(content)) !== null) {
+    while ((match = codeBlockRegex.exec(content)) !== null) {
+        try {
+            const call = JSON.parse(match[1]);
+            // 支持 {"tool": "xxx", "args": {...}} 格式
+            if (call.tool && AGENT_TOOLS[call.tool]) {
+                toolCalls.push({ name: call.tool, arguments: call.args || {} });
+            }
+            // 支持 {"name": "xxx", "arguments": {...}} 格式
+            if (call.name && AGENT_TOOLS[call.name]) {
+                toolCalls.push({ name: call.name, arguments: call.arguments || {} });
+            }
+        } catch (e) {
+            // 解析失败，跳过
+        }
+    }
+    
+    // 格式2: <tool_call>{"name": "xxx", "arguments": {...}}</tool_call>
+    const toolCallRegex = /<tool_call>\s*(\{[\s\S]*?\})\s*<\/tool_call>/g;
+    while ((match = toolCallRegex.exec(content)) !== null) {
         try {
             const call = JSON.parse(match[1]);
             if (call.name && AGENT_TOOLS[call.name]) {
                 toolCalls.push(call);
             }
         } catch (e) {
-            // 不是 JSON 格式，尝试其他格式
-        }
-    }
-    
-    // 格式2: <tool_call><tool_name>{...}</tool_name></tool_call>
-    // 或者: <tool_name>{...}</tool_name>
-    for (const toolName of Object.keys(AGENT_TOOLS)) {
-        const tagRegex = new RegExp(`<${toolName}>\\s*([\\s\\S]*?)\\s*<\\/${toolName}>`, 'g');
-        while ((match = tagRegex.exec(content)) !== null) {
-            try {
-                const args = JSON.parse(match[1]);
-                toolCalls.push({ name: toolName, arguments: args });
-            } catch (e) {
-                // 解析失败，跳过
-            }
+            // 解析失败，跳过
         }
     }
     
