@@ -2576,3 +2576,14 @@ h3 { font-size: 18px; font-weight: 600; margin: 24px 0 12px; }
         justify-content: center;
     }
 }
+
+/* ============ Loading Models ============ */
+.loading-models {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 40px;
+    color: var(--text-secondary);
+    font-size: 14px;
+}
