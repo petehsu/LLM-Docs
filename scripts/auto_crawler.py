@@ -10,6 +10,7 @@ import json
 import subprocess
 import time
 import traceback
+import re
 from datetime import datetime
 from pathlib import Path
 
@@ -98,7 +99,129 @@ CRAWLERS = [
 
 STATUS_FILE = 'docs-site/crawl-status.json'
 EVENTS_FILE = 'docs-site/crawl-events.json'
+DOCS_DIR = 'docs-site/docs'
 MAX_EVENTS = 500  # 最多保留的事件数量
+
+# 爬取时间戳标记（多语言）
+CRAWL_HEADER_MARKERS = {
+    'en': '> 📄 *Auto-crawled by [LLM Docs](https://petehsu.github.io/LLM-Docs/) on {date}*\n\n',
+    'zh': '> 📄 *由 [LLM Docs](https://petehsu.github.io/LLM-Docs/) 自动爬取于 {date}*\n\n',
+    'ja': '> 📄 *[LLM Docs](https://petehsu.github.io/LLM-Docs/) により {date} に自動取得*\n\n',
+}
+
+# 检测语言的关键词
+LANG_DETECT_PATTERNS = {
+    'zh': [r'[\u4e00-\u9fff]'],  # 中文字符
+    'ja': [r'[\u3040-\u309f\u30a0-\u30ff]'],  # 日文假名
+}
+
+
+def detect_doc_language(content, filepath):
+    """检测文档语言"""
+    # 先从路径判断
+    path_lower = filepath.lower()
+    if '/chinese/' in path_lower or '/zh/' in path_lower or '中文' in filepath:
+        return 'zh'
+    if '/japanese/' in path_lower or '/ja/' in path_lower or '日本語' in filepath:
+        return 'ja'
+    if '/english/' in path_lower or '/en/' in path_lower:
+        return 'en'
+    
+    # 从内容判断
+    sample = content[:1000]
+    
+    # 检测日文（先检测，因为日文也可能包含汉字）
+    for pattern in LANG_DETECT_PATTERNS['ja']:
+        if re.search(pattern, sample):
+            return 'ja'
+    
+    # 检测中文
+    for pattern in LANG_DETECT_PATTERNS['zh']:
+        if re.search(pattern, sample):
+            return 'zh'
+    
+    return 'en'
+
+
+def has_crawl_header(content):
+    """检查文档是否已有爬取时间戳"""
+    for marker in CRAWL_HEADER_MARKERS.values():
+        # 检查是否包含 LLM Docs 标记
+        if 'Auto-crawled by [LLM Docs]' in content or '由 [LLM Docs]' in content or '[LLM Docs]' in content[:500]:
+            return True
+    return False
+
+
+def add_crawl_header(filepath, crawl_time=None):
+    """为文档添加爬取时间戳"""
+    if crawl_time is None:
+        crawl_time = datetime.now()
+    
+    try:
+        with open(filepath, 'r', encoding='utf-8') as f:
+            content = f.read()
+        
+        # 已有标记则跳过
+        if has_crawl_header(content):
+            return False
+        
+        # 检测语言
+        lang = detect_doc_language(content, filepath)
+        
+        # 格式化日期
+        date_str = crawl_time.strftime('%Y-%m-%d %H:%M UTC')
+        
+        # 获取对应语言的标记
+        header = CRAWL_HEADER_MARKERS.get(lang, CRAWL_HEADER_MARKERS['en'])
+        header = header.format(date=date_str)
+        
+        # 添加到文档开头
+        new_content = header + content
+        
+        with open(filepath, 'w', encoding='utf-8') as f:
+            f.write(new_content)
+        
+        return True
+    except Exception as e:
+        print(f"  ⚠️ Failed to add header to {filepath}: {e}")
+        return False
+
+
+def add_headers_to_new_docs(vendor_id, crawl_time):
+    """为新爬取的文档添加时间戳"""
+    vendor_docs_dir = None
+    
+    # 映射 vendor_id 到文档目录
+    vendor_dir_map = {
+        'grok': 'X Grok',
+        'megallm': 'MegaLLM',
+        'minimax': 'MiniMax',
+        'zhipu': 'BigModel Zhipu',
+        'claude': 'Anthropic Claude',
+        'gemini': 'Google Gemini',
+        'openai': 'OpenAI',
+        'moonshot': 'Moonshot Kimi',
+        'zhipu_en': 'BigModel Zhipu',
+        'meta': 'Meta Llama',
+        'deepseek': 'DeepSeek',
+    }
+    
+    dir_name = vendor_dir_map.get(vendor_id)
+    if dir_name:
+        vendor_docs_dir = os.path.join(DOCS_DIR, dir_name)
+    
+    if not vendor_docs_dir or not os.path.exists(vendor_docs_dir):
+        return 0
+    
+    added_count = 0
+    for root, dirs, files in os.walk(vendor_docs_dir):
+        for file in files:
+            if file.endswith('.md'):
+                filepath = os.path.join(root, file)
+                if add_crawl_header(filepath, crawl_time):
+                    added_count += 1
+    
+    return added_count
 
 
 # ============ 事件日志系统 ============
@@ -206,6 +329,7 @@ def run_crawler(crawler):
               f"Starting crawler: {script} {' '.join(args)}")
     
     start_time = time.time()
+    crawl_time = datetime.now()
     
     try:
         cmd = [sys.executable, '-u', script] + args
@@ -224,17 +348,20 @@ def run_crawler(crawler):
         for line in output_lines:
             if 'docs' in line.lower() or '文档' in line:
                 # 尝试提取数字
-                import re
                 numbers = re.findall(r'\d+', line)
                 if numbers:
                     doc_count = max(doc_count, int(numbers[0]))
         
         if result.returncode == 0:
+            # 为新爬取的文档添加时间戳
+            headers_added = add_headers_to_new_docs(crawler_id, crawl_time)
+            
             log_event(EventType.SUCCESS, crawler_id, crawler_name,
-                      f"Completed successfully in {duration}s",
+                      f"Completed successfully in {duration}s, {headers_added} docs stamped",
                       {
                           'duration': duration,
                           'docCount': doc_count,
+                          'headersAdded': headers_added,
                           'outputLines': len(output_lines),
                       })
             return True, None, duration, doc_count

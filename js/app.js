@@ -15,6 +15,16 @@ document.addEventListener('DOMContentLoaded', async () => {
     // 初始化主题
     initTheme();
     
+    // 初始化 Firebase 统计
+    if (typeof initFirebaseAnalytics === 'function') {
+        initFirebaseAnalytics().then(() => {
+            // 记录总访问量
+            if (typeof trackTotalVisits === 'function') {
+                trackTotalVisits();
+            }
+        });
+    }
+    
     // 加载文档索引
     try {
         const response = await fetch('docs-index.json');
@@ -173,10 +183,10 @@ function handleHashChange() {
         return;
     }
     
-    // 设置页面
-    if (hash === 'settings') {
-        renderSettingsPage();
-        updateActiveNav('settings');
+    // 留言板页面
+    if (hash === 'guestbook') {
+        renderGuestbookPage();
+        updateActiveNav('guestbook');
         return;
     }
     

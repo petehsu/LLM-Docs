@@ -3,6 +3,7 @@ const I18N = {
     en: {
         // Header
         search: 'Search docs...',
+        online: 'online',
         
         // Sidebar
         vendors: 'Vendors',
@@ -39,6 +40,11 @@ const I18N = {
         // Code copy
         copy: 'Copy',
         copied: 'Copied!',
+        
+        // Doc stats
+        views: 'views',
+        downloads: 'downloads',
+        reading: 'reading',
         
         // Tech docs page
         techDocsTitle: 'Technical Documentation',
@@ -109,6 +115,26 @@ const I18N = {
         mcpSetup: 'MCP Setup',
         mcpTitle: 'MCP Server Integration',
         mcpDesc: 'Connect AI assistants to read all LLM API documentation via Model Context Protocol.',
+        
+        // Guestbook
+        guestbook: 'Guestbook',
+        guestbookTitle: 'Guestbook',
+        guestbookDesc: 'Leave a message, share your thoughts, or say hello!',
+        nicknamePlaceholder: 'Nickname (optional)',
+        messagePlaceholder: 'Write your message here...',
+        submit: 'Submit',
+        submitting: 'Submitting...',
+        recentMessages: 'Recent Messages',
+        noComments: 'No messages yet. Be the first to leave one!',
+        emptyMessage: 'Please enter a message',
+        commentPosted: 'Message posted!',
+        commentFailed: 'Failed to post message',
+        loading: 'Loading',
+        justNow: 'Just now',
+        minutesAgo: 'm ago',
+        hoursAgo: 'h ago',
+        daysAgo: 'd ago',
+        totalVisits: 'visits',
         mcpWhatIs: 'What is MCP?',
         mcpWhatIsDesc: 'Model Context Protocol (MCP) is an open standard that enables AI assistants to securely access external data sources and tools. With our MCP server, AI assistants can search and read all 1600+ LLM API documents.',
         mcpFeatures: 'Features',
@@ -190,6 +216,10 @@ const I18N = {
     },
     zh: {
         search: '搜索文档...',
+        online: '在线',
+        views: '浏览',
+        downloads: '下载',
+        reading: '正在阅读',
         vendors: '厂商',
         techDocs: '技术文档',
         onThisPage: '本页目录',
@@ -279,6 +309,26 @@ const I18N = {
         mcpSetup: 'MCP 配置',
         mcpTitle: 'MCP 服务器集成',
         mcpDesc: '通过 Model Context Protocol 让 AI 助手读取所有大模型 API 文档。',
+        
+        // Guestbook
+        guestbook: '留言板',
+        guestbookTitle: '留言板',
+        guestbookDesc: '留下你的想法，分享你的建议，或者打个招呼！',
+        nicknamePlaceholder: '昵称（可选）',
+        messagePlaceholder: '写下你的留言...',
+        submit: '发送',
+        submitting: '发送中...',
+        recentMessages: '最近留言',
+        noComments: '还没有留言，来做第一个吧！',
+        emptyMessage: '请输入留言内容',
+        commentPosted: '留言成功！',
+        commentFailed: '留言失败',
+        loading: '加载中',
+        justNow: '刚刚',
+        minutesAgo: '分钟前',
+        hoursAgo: '小时前',
+        daysAgo: '天前',
+        totalVisits: '访问',
         mcpWhatIs: '什么是 MCP？',
         mcpWhatIsDesc: 'Model Context Protocol (MCP) 是一个开放标准，让 AI 助手能够安全地访问外部数据源和工具。通过我们的 MCP 服务器，AI 助手可以搜索和读取所有 1600+ 篇大模型 API 文档。',
         mcpFeatures: '功能特性',
@@ -360,6 +410,10 @@ const I18N = {
     },
     ja: {
         search: 'ドキュメントを検索...',
+        online: 'オンライン',
+        views: '閲覧',
+        downloads: 'ダウンロード',
+        reading: '閲覧中',
         vendors: 'ベンダー',
         techDocs: '技術ドキュメント',
         onThisPage: 'このページの内容',
@@ -449,6 +503,26 @@ const I18N = {
         mcpSetup: 'MCP設定',
         mcpTitle: 'MCPサーバー統合',
         mcpDesc: 'Model Context Protocolを通じてAIアシスタントがすべてのLLM APIドキュメントを読み取れるようにします。',
+        
+        // Guestbook
+        guestbook: 'ゲストブック',
+        guestbookTitle: 'ゲストブック',
+        guestbookDesc: 'メッセージを残したり、感想を共有したり、挨拶したりしてください！',
+        nicknamePlaceholder: 'ニックネーム（任意）',
+        messagePlaceholder: 'メッセージを入力...',
+        submit: '送信',
+        submitting: '送信中...',
+        recentMessages: '最近のメッセージ',
+        noComments: 'まだメッセージがありません。最初の一人になりましょう！',
+        emptyMessage: 'メッセージを入力してください',
+        commentPosted: '投稿しました！',
+        commentFailed: '投稿に失敗しました',
+        loading: '読み込み中',
+        justNow: 'たった今',
+        minutesAgo: '分前',
+        hoursAgo: '時間前',
+        daysAgo: '日前',
+        totalVisits: '訪問',
         mcpWhatIs: 'MCPとは？',
         mcpWhatIsDesc: 'Model Context Protocol (MCP) は、AIアシスタントが外部データソースやツールに安全にアクセスできるようにするオープンスタンダードです。当MCPサーバーを使用すると、AIアシスタントは1600以上のLLM APIドキュメントを検索・閲覧できます。',
         mcpFeatures: '機能',

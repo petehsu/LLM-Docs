@@ -23,6 +23,12 @@ async function loadDocument(vendor, docPath) {
         filePath = `docs/${vendor.folder}/${actualPath}`;
     }
     
+    // 记录页面浏览（Firebase）
+    const fullDocPath = `${vendor.id}/${docPath}`;
+    if (typeof trackPageView === 'function') {
+        trackPageView(fullDocPath);
+    }
+    
     try {
         const response = await fetch(filePath);
         if (!response.ok) throw new Error('Not found');
@@ -64,6 +70,24 @@ async function loadDocument(vendor, docPath) {
                 <span>${title}</span>
             </div>
             
+            <div class="doc-stats" id="doc-stats">
+                <div class="doc-stat-item">
+                    ${icon('views')}
+                    <span class="doc-stat-value" id="stat-views">-</span>
+                    <span>${t('views')}</span>
+                </div>
+                <div class="doc-stat-item">
+                    ${icon('download')}
+                    <span class="doc-stat-value" id="stat-downloads">-</span>
+                    <span>${t('downloads')}</span>
+                </div>
+                <div class="doc-stat-item reading">
+                    ${icon('reading')}
+                    <span class="doc-stat-value" id="stat-reading">-</span>
+                    <span>${t('reading')}</span>
+                </div>
+            </div>
+            
             <div class="doc-actions">
                 ${langTabsHtml}
                 <div class="doc-action-buttons">
@@ -73,7 +97,7 @@ async function loadDocument(vendor, docPath) {
                         </svg>
                         ${t('copyMarkdown')}
                     </button>
-                    <button class="doc-action-btn" onclick="downloadCurrentDoc()" title="${t('downloadDoc')}">
+                    <button class="doc-action-btn" onclick="downloadCurrentDoc('${fullDocPath}')" title="${t('downloadDoc')}">
                         <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
                             <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/>
                         </svg>
@@ -87,6 +111,9 @@ async function loadDocument(vendor, docPath) {
             </article>
         `;
         
+        // 加载文档统计
+        loadDocStats(fullDocPath);
+        
         // 代码高亮
         document.querySelectorAll('pre code').forEach(block => {
             hljs.highlightElement(block);
@@ -97,6 +124,32 @@ async function loadDocument(vendor, docPath) {
         
     } catch (error) {
         renderDocNotFound(vendor, docPath);
+    }
+}
+
+// 加载文档统计
+async function loadDocStats(docPath) {
+    if (typeof getDocStats !== 'function') return;
+    
+    try {
+        const stats = await getDocStats(docPath);
+        
+        const viewsEl = document.getElementById('stat-views');
+        const downloadsEl = document.getElementById('stat-downloads');
+        const readingEl = document.getElementById('stat-reading');
+        
+        if (viewsEl) viewsEl.textContent = formatStatNumber(stats.views);
+        if (downloadsEl) downloadsEl.textContent = formatStatNumber(stats.downloads);
+        if (readingEl) readingEl.textContent = stats.reading;
+        
+        // 监听实时阅读人数
+        if (typeof watchDocReading === 'function') {
+            watchDocReading(docPath, (count) => {
+                if (readingEl) readingEl.textContent = count;
+            });
+        }
+    } catch (e) {
+        console.error('Load doc stats error:', e);
     }
 }
 
