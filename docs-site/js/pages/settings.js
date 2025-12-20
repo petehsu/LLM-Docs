@@ -156,12 +156,19 @@ const API_PROVIDERS = {
 };
 
 // Proxy configuration
-const PROXY_URL = 'http://localhost:8888/proxy/';
+const LOCAL_PROXY_URL = 'http://localhost:8888/proxy/';
+const VERCEL_PROXY_URL = '/api/proxy';
+
+// Check if running on Vercel
+function isVercel() {
+    return window.location.hostname.includes('vercel.app');
+}
 
 // Check if proxy is available
 async function checkProxyAvailable() {
+    if (isVercel()) return true; // Vercel always has proxy
     try {
-        const response = await fetch(PROXY_URL.slice(0, -7), { method: 'HEAD', mode: 'no-cors' });
+        const response = await fetch(LOCAL_PROXY_URL.slice(0, -7), { method: 'HEAD', mode: 'no-cors' });
         return true;
     } catch {
         return false;
@@ -171,8 +178,14 @@ async function checkProxyAvailable() {
 // Get the actual API URL (with or without proxy)
 function getApiUrl(baseUrl, useProxy = false) {
     if (!useProxy) return baseUrl;
-    // Convert https://api.deepseek.com to http://localhost:8888/proxy/api.deepseek.com
-    return PROXY_URL + baseUrl.replace(/^https?:\/\//, '');
+    
+    if (isVercel()) {
+        // On Vercel, return the proxy endpoint (we'll handle the full URL in the request)
+        return VERCEL_PROXY_URL;
+    }
+    
+    // Local proxy: Convert https://api.deepseek.com to http://localhost:8888/proxy/api.deepseek.com
+    return LOCAL_PROXY_URL + baseUrl.replace(/^https?:\/\//, '');
 }
 
 // Get saved settings
@@ -496,13 +509,36 @@ async function testApiConnection() {
         if (body.stream !== undefined) body.stream = false;
 
         // Use proxy if enabled
-        const actualBaseUrl = settings.useProxy ? getApiUrl(baseUrl, true) : baseUrl;
+        const useProxy = settings.useProxy;
+        let response;
 
-        const response = await fetch(`${actualBaseUrl}${endpoint}`, {
-            method: 'POST',
-            headers,
-            body: JSON.stringify(body),
-        });
+        if (useProxy && isVercel()) {
+            // Vercel proxy: send request through /api/proxy
+            response = await fetch(VERCEL_PROXY_URL, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    targetUrl: `${baseUrl}${endpoint}`,
+                    headers: headers,
+                    body: body,
+                }),
+            });
+        } else if (useProxy) {
+            // Local proxy
+            const actualBaseUrl = getApiUrl(baseUrl, true);
+            response = await fetch(`${actualBaseUrl}${endpoint}`, {
+                method: 'POST',
+                headers,
+                body: JSON.stringify(body),
+            });
+        } else {
+            // Direct call (will fail due to CORS on most browsers)
+            response = await fetch(`${baseUrl}${endpoint}`, {
+                method: 'POST',
+                headers,
+                body: JSON.stringify(body),
+            });
+        }
 
         if (response.ok) {
             const data = await response.json();
@@ -525,7 +561,7 @@ async function testApiConnection() {
         resultDiv.innerHTML = `
             <div class="test-error">
                 ${icon('error')} ${t('connectionError')}: ${err.message}
-                ${settings.useProxy ? '<br><small>Make sure proxy server is running: <code>python3 proxy-server.py</code></small>' : '<br><small>Try enabling the CORS proxy in settings above.</small>'}
+                ${settings.useProxy && !isVercel() ? '<br><small>Make sure proxy server is running: <code>python3 proxy-server.py</code></small>' : '<br><small>Try enabling the CORS proxy in settings above.</small>'}
             </div>
         `;
     }
