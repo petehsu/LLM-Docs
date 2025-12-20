@@ -32,8 +32,10 @@ except ImportError:
     sys.exit(1)
 
 # 项目根目录
-ROOT_DIR = Path(__file__).parent.absolute()
-DOCS_INDEX_FILE = ROOT_DIR / "docs-site" / "docs-index.json"
+SCRIPT_DIR = Path(__file__).parent.absolute()
+ROOT_DIR = SCRIPT_DIR.parent  # docs-site 目录
+DOCS_DIR = ROOT_DIR / "docs"
+DOCS_INDEX_FILE = ROOT_DIR / "docs-index.json"
 
 # 厂商配置
 VENDORS = {
@@ -131,8 +133,8 @@ def read_doc_content(vendor_id: str, doc_path: str) -> str:
     lang_code = parts[0]
     actual_path = parts[1]
     
-    # 构建文件路径
-    vendor_folder = ROOT_DIR / vendor["folder"]
+    # 构建文件路径 - 使用 DOCS_DIR
+    vendor_folder = DOCS_DIR / vendor["folder"]
     
     # 尝试不同的路径组合
     possible_paths = [
@@ -183,7 +185,7 @@ def search_docs(query: str, vendor_id: str = None, limit: int = 20) -> list[dict
         if not vendor:
             continue
         
-        vendor_folder = ROOT_DIR / vendor["folder"]
+        vendor_folder = DOCS_DIR / vendor["folder"]
         if not vendor_folder.exists():
             continue
         
