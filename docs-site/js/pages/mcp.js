@@ -1,5 +1,113 @@
 // ============ MCP 配置页面渲染 ============
 
+// MCP 配置内容
+const MCP_CONFIGS = {
+    kiro: {
+        filename: 'mcp.json',
+        content: `{
+  "mcpServers": {
+    "llm-docs": {
+      "command": "python3",
+      "args": ["mcp_server.py"],
+      "env": {},
+      "disabled": false,
+      "autoApprove": [
+        "list_vendors",
+        "list_docs", 
+        "read_doc",
+        "search_docs",
+        "get_doc_stats"
+      ]
+    }
+  }
+}`
+    },
+    claude: {
+        filename: 'claude_desktop_config.json',
+        content: `{
+  "mcpServers": {
+    "llm-docs": {
+      "command": "python3",
+      "args": ["/path/to/llm-docs/mcp_server.py"]
+    }
+  }
+}`
+    },
+    cursor: {
+        filename: 'mcp.json',
+        content: `{
+  "mcpServers": {
+    "llm-docs": {
+      "command": "python3",
+      "args": ["mcp_server.py"],
+      "cwd": "/path/to/llm-docs"
+    }
+  }
+}`
+    },
+    vscode: {
+        filename: 'config.json',
+        content: `{
+  "experimental": {
+    "modelContextProtocolServers": [
+      {
+        "transport": {
+          "type": "stdio",
+          "command": "python3",
+          "args": ["/path/to/llm-docs/mcp_server.py"]
+        }
+      }
+    ]
+  }
+}`
+    }
+};
+
+// 复制 MCP 配置
+function copyMcpConfig(configType) {
+    const config = MCP_CONFIGS[configType];
+    if (!config) return;
+    
+    navigator.clipboard.writeText(config.content).then(() => {
+        showToast(t('copied'));
+    }).catch(err => {
+        console.error('Copy failed:', err);
+    });
+}
+
+// 下载 MCP 配置
+function downloadMcpConfig(configType) {
+    const config = MCP_CONFIGS[configType];
+    if (!config) return;
+    
+    const blob = new Blob([config.content], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = config.filename;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+}
+
+// 显示 Toast 提示
+function showToast(message) {
+    const existing = document.querySelector('.toast');
+    if (existing) existing.remove();
+    
+    const toast = document.createElement('div');
+    toast.className = 'toast';
+    toast.textContent = message;
+    document.body.appendChild(toast);
+    
+    setTimeout(() => toast.classList.add('show'), 10);
+    setTimeout(() => {
+        toast.classList.remove('show');
+        setTimeout(() => toast.remove(), 300);
+    }, 2000);
+}
+
 // MCP 工具配置
 const MCP_TOOLS = [
     {
@@ -167,8 +275,16 @@ python3 build_docs_site.py</code></pre>
         <div class="mcp-config-content" id="mcp-config-content">
             <div class="config-panel active" data-config="kiro">
                 <p class="config-path"><span class="path-icon">${icon('folder')}</span> <code>.kiro/settings/mcp.json</code></p>
+                <div class="config-actions">
+                    <button class="config-action-btn" onclick="copyMcpConfig('kiro')" title="${t('copy')}">
+                        ${icon('copy')} ${t('copy')}
+                    </button>
+                    <button class="config-action-btn" onclick="downloadMcpConfig('kiro')" title="${t('download')}">
+                        ${icon('download')} ${t('download')}
+                    </button>
+                </div>
                 <div class="markdown-body">
-                    <pre><code class="language-json">{
+                    <pre><code class="language-json" id="config-kiro">{
   "mcpServers": {
     "llm-docs": {
       "command": "python3",
@@ -190,8 +306,16 @@ python3 build_docs_site.py</code></pre>
             <div class="config-panel" data-config="claude">
                 <p class="config-path"><span class="path-icon">${icon('folder')}</span> <code>~/Library/Application Support/Claude/claude_desktop_config.json</code> (macOS)</p>
                 <p class="config-path"><span class="path-icon">${icon('folder')}</span> <code>%APPDATA%\\Claude\\claude_desktop_config.json</code> (Windows)</p>
+                <div class="config-actions">
+                    <button class="config-action-btn" onclick="copyMcpConfig('claude')" title="${t('copy')}">
+                        ${icon('copy')} ${t('copy')}
+                    </button>
+                    <button class="config-action-btn" onclick="downloadMcpConfig('claude')" title="${t('download')}">
+                        ${icon('download')} ${t('download')}
+                    </button>
+                </div>
                 <div class="markdown-body">
-                    <pre><code class="language-json">{
+                    <pre><code class="language-json" id="config-claude">{
   "mcpServers": {
     "llm-docs": {
       "command": "python3",
@@ -203,8 +327,16 @@ python3 build_docs_site.py</code></pre>
             </div>
             <div class="config-panel" data-config="cursor">
                 <p class="config-path"><span class="path-icon">${icon('folder')}</span> <code>.cursor/mcp.json</code></p>
+                <div class="config-actions">
+                    <button class="config-action-btn" onclick="copyMcpConfig('cursor')" title="${t('copy')}">
+                        ${icon('copy')} ${t('copy')}
+                    </button>
+                    <button class="config-action-btn" onclick="downloadMcpConfig('cursor')" title="${t('download')}">
+                        ${icon('download')} ${t('download')}
+                    </button>
+                </div>
                 <div class="markdown-body">
-                    <pre><code class="language-json">{
+                    <pre><code class="language-json" id="config-cursor">{
   "mcpServers": {
     "llm-docs": {
       "command": "python3",
@@ -217,8 +349,16 @@ python3 build_docs_site.py</code></pre>
             </div>
             <div class="config-panel" data-config="vscode">
                 <p class="config-path"><span class="path-icon">${icon('folder')}</span> <code>.continue/config.json</code></p>
+                <div class="config-actions">
+                    <button class="config-action-btn" onclick="copyMcpConfig('vscode')" title="${t('copy')}">
+                        ${icon('copy')} ${t('copy')}
+                    </button>
+                    <button class="config-action-btn" onclick="downloadMcpConfig('vscode')" title="${t('download')}">
+                        ${icon('download')} ${t('download')}
+                    </button>
+                </div>
                 <div class="markdown-body">
-                    <pre><code class="language-json">{
+                    <pre><code class="language-json" id="config-vscode">{
   "experimental": {
     "modelContextProtocolServers": [
       {

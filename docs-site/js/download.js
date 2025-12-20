@@ -26,10 +26,21 @@ async function copyDocContent() {
 }
 
 // 下载当前文档
-function downloadCurrentDoc() {
+function downloadCurrentDoc(docPath) {
     if (!currentDocContent || !currentDocPath) return;
     const filename = currentDocPath.split('/').pop() || 'document.md';
     downloadFile(currentDocContent, filename);
+    
+    // 记录下载统计
+    if (docPath && typeof trackDownload === 'function') {
+        trackDownload(docPath);
+        // 更新 UI
+        const downloadsEl = document.getElementById('stat-downloads');
+        if (downloadsEl) {
+            const current = parseInt(downloadsEl.textContent) || 0;
+            downloadsEl.textContent = formatStatNumber(current + 1);
+        }
+    }
 }
 
 // 更新下载按钮状态
