@@ -139,6 +139,12 @@ function createAgentButton() {
 function createAgentMessagesContainer() {
     if (document.getElementById('agent-messages-container')) return;
 
+    const searchWrapper = document.querySelector('.search-input-wrapper');
+    if (!searchWrapper) {
+        setTimeout(createAgentMessagesContainer, 200);
+        return;
+    }
+
     const container = document.createElement('div');
     container.id = 'agent-messages-container';
     container.className = 'agent-messages-container';
@@ -146,10 +152,7 @@ function createAgentMessagesContainer() {
         <div class="agent-messages-inner" id="agent-messages"></div>
     `;
 
-    const searchWrapper = document.querySelector('.search-input-wrapper');
-    if (searchWrapper) {
-        searchWrapper.insertBefore(container, searchWrapper.firstChild);
-    }
+    searchWrapper.insertBefore(container, searchWrapper.firstChild);
 }
 
 // Create code panel (右侧悬浮代码面板 - 极简结构)
@@ -174,25 +177,32 @@ function createCodePanel() {
 
 // Toggle Agent mode
 function toggleAgentMode() {
-    agentMode = !agentMode;
-
     const searchInput = document.getElementById('floating-search-input');
     const searchWrapper = document.querySelector('.search-input-wrapper');
     const agentBtn = document.querySelector('.agent-toggle-btn');
-    const messagesContainer = document.getElementById('agent-messages-container');
+    let messagesContainer = document.getElementById('agent-messages-container');
     const searchResults = document.getElementById('search-results-container');
 
+    // 如果消息容器不存在，先创建
+    if (!messagesContainer) {
+        createAgentMessagesContainer();
+        messagesContainer = document.getElementById('agent-messages-container');
+    }
+
     // 空值检查
-    if (!searchWrapper || !agentBtn || !messagesContainer || !searchInput) {
-        console.warn('Agent UI elements not found');
+    if (!searchWrapper || !agentBtn || !searchInput) {
+        console.warn('Agent UI elements not found, retrying...');
+        setTimeout(toggleAgentMode, 200);
         return;
     }
+
+    agentMode = !agentMode;
 
     if (agentMode) {
         // 进入 Agent 模式
         searchWrapper.classList.add('agent-mode');
         agentBtn.classList.add('active');
-        messagesContainer.classList.add('show');
+        if (messagesContainer) messagesContainer.classList.add('show');
 
         // 隐藏搜索结果
         if (searchResults) searchResults.classList.remove('show');
@@ -213,7 +223,7 @@ function toggleAgentMode() {
         // 退出 Agent 模式
         searchWrapper.classList.remove('agent-mode');
         agentBtn.classList.remove('active');
-        messagesContainer.classList.remove('show');
+        if (messagesContainer) messagesContainer.classList.remove('show');
 
         // 恢复搜索功能
         searchInput.placeholder = t('searchPlaceholder');
