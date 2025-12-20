@@ -813,6 +813,111 @@ h3 { font-size: 18px; font-weight: 600; margin: 24px 0 12px; }
 
 .refresh-btn:hover { border-color: var(--text-tertiary); color: var(--text-primary); }
 
+/* Crawl Dashboard */
+.crawl-dashboard {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-bottom: 32px;
+}
+
+.dashboard-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 16px;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.dashboard-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.dashboard-card-icon {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--bg-primary);
+    border-radius: 10px;
+    color: var(--accent-color);
+}
+
+.dashboard-card-icon svg { width: 20px; height: 20px; }
+
+.dashboard-card-content { flex: 1; min-width: 0; }
+.dashboard-card-label { font-size: 12px; color: var(--text-tertiary); margin-bottom: 4px; }
+.dashboard-card-value { font-size: 20px; font-weight: 600; color: var(--text-primary); }
+.dashboard-card-value.countdown { font-family: 'SF Mono', Monaco, monospace; font-size: 24px; color: var(--accent-color); }
+.dashboard-card-sub { font-size: 11px; color: var(--text-tertiary); margin-top: 2px; }
+
+.health-percent { font-weight: 700; }
+.health-percent.perfect { color: var(--accent-color); }
+.health-percent.good { color: #3b82f6; }
+.health-percent.warning { color: #f59e0b; }
+
+/* Vendor Health Grid */
+.vendor-health-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 12px;
+    margin-bottom: 32px;
+}
+
+.vendor-health-card {
+    padding: 12px;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    transition: transform 0.15s;
+}
+
+.vendor-health-card:hover { transform: translateY(-1px); }
+
+.vendor-health-card.healthy { border-left: 3px solid var(--accent-color); }
+.vendor-health-card.unhealthy { border-left: 3px solid #ef4444; }
+
+.vendor-health-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 8px;
+}
+
+.vendor-health-name {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-primary);
+}
+
+.auto-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 18px;
+    height: 18px;
+    background: var(--accent-color);
+    border-radius: 4px;
+    color: white;
+}
+
+.auto-badge svg { width: 12px; height: 12px; }
+
+.vendor-health-status {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    color: var(--text-secondary);
+}
+
+.vendor-health-status svg { width: 14px; height: 14px; }
+
 /* MCP Page */
 .mcp-hero {
     background: var(--bg-secondary);
@@ -1104,6 +1209,8 @@ h3 { font-size: 18px; font-weight: 600; margin: 24px 0 12px; }
     .stats-grid { flex-wrap: wrap; gap: 16px; }
     .vendor-cards { grid-template-columns: 1fr; }
     .event-stats-grid { grid-template-columns: repeat(2, 1fr); }
+    .crawl-dashboard { grid-template-columns: repeat(2, 1fr); }
+    .vendor-health-grid { grid-template-columns: repeat(2, 1fr); }
     .mcp-features { grid-template-columns: 1fr; }
     .mcp-hero-stats { flex-direction: column; gap: 16px; }
     .page-header-with-action { flex-direction: column; }
