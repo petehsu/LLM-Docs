@@ -1,0 +1,39 @@
+https://platform.claude.com/docs/en/home.md
+  Status: 200, Type: text/markdown; charset=UTF-8, Size: 2422
+  Content preview: Build with Claude
+      
+
+      
+
+        Learn how to get started with the Claude Developer Platform and Claude Code.
+      
+
+      
+
+        
+
+          <DocsSearchBar placeholder="Ask Claude about docs..." />
+        
+
+      
+
+    
+
+  
+
+  <h2}>
+    Claude Developer Platform
+  </h2>
+  
+
+    <Card ...
+
+https://platform.claude.com/docs/en/home.md.txt
+  Status: 200, Type: text/html; charset=utf-8, Size: 215294
+  Content preview: <!DOCTYPE html><html class="h-screen antialiased bg-bg-100 __variable_8d1da5 __variable_2d8cf6 __variable_e4195f" lang="en" data-theme="claude" data-mode="auto"><head><meta charSet="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover"/><lin...
+
+https://platform.claude.com/docs/en/home/raw
+  Status: 200, Type: text/html; charset=utf-8, Size: 215283
+  Content preview: <!DOCTYPE html><html class="h-screen antialiased bg-bg-100 __variable_8d1da5 __variable_2d8cf6 __variable_e4195f" lang="en" data-theme="claude" data-mode="auto"><head><meta charSet="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover"/><lin...
+
+https://platform.claude.com/docs/en/home?format=md -> Error: HTTPSConnectionPool(host='platform.claude.com', port=443): Read timed out. (read timeout=10)

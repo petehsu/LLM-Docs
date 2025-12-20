@@ -1,0 +1,590 @@
+[
+  {
+    "id": "gpt-4.1",
+    "input_price": "$2.00/M",
+    "output_price": "$8.00/M",
+    "context_window": "128,000 tokens",
+    "max_output": "16,384 tokens",
+    "capabilities": [
+      "Vision",
+      "Functions",
+      "Streaming",
+      "Structured"
+    ],
+    "provider": "OpenAI",
+    "name": "GPT-4.1",
+    "description": "Advanced language model with superior reasoning capabilities",
+    "type": "chat"
+  },
+  {
+    "id": "gpt-5-mini",
+    "input_price": "$0.25/M",
+    "output_price": "$2.00/M",
+    "context_window": "128,000 tokens",
+    "max_output": "64,000 tokens",
+    "capabilities": [
+      "Vision",
+      "Functions",
+      "Streaming",
+      "Structured"
+    ],
+    "provider": "OpenAI",
+    "name": "GPT-5 MINI",
+    "description": "Advanced language model with superior reasoning capabilities",
+    "type": "chat"
+  },
+  {
+    "id": "gpt-5",
+    "input_price": "$1.25/M",
+    "output_price": "$10.00/M",
+    "context_window": "128,000 tokens",
+    "max_output": "64,000 tokens",
+    "capabilities": [
+      "Vision",
+      "Functions",
+      "Streaming",
+      "Structured"
+    ],
+    "provider": "OpenAI",
+    "name": "GPT-5",
+    "description": "Advanced language model with superior reasoning capabilities",
+    "type": "chat"
+  },
+  {
+    "id": "gpt-3.5-turbo",
+    "input_price": "$0.50/M",
+    "output_price": "$1.50/M",
+    "context_window": "16,384 tokens",
+    "max_output": "4,096 tokens",
+    "capabilities": [
+      "Vision",
+      "Functions",
+      "Streaming",
+      "Structured"
+    ],
+    "provider": "OpenAI",
+    "name": "GPT-3.5 TURBO",
+    "description": "Advanced language model with superior reasoning capabilities",
+    "type": "chat"
+  },
+  {
+    "id": "gpt-4o-mini",
+    "input_price": "$0.15/M",
+    "output_price": "$0.60/M",
+    "context_window": "128,000 tokens",
+    "max_output": "4,096 tokens",
+    "capabilities": [
+      "Vision",
+      "Functions",
+      "Streaming",
+      "Structured"
+    ],
+    "provider": "OpenAI",
+    "name": "GPT-4O MINI",
+    "description": "Advanced language model with superior reasoning capabilities",
+    "type": "chat"
+  },
+  {
+    "id": "gpt-4o",
+    "input_price": "$2.50/M",
+    "output_price": "$10.00/M",
+    "context_window": "128,000 tokens",
+    "max_output": "4,096 tokens",
+    "capabilities": [
+      "Vision",
+      "Functions",
+      "Streaming",
+      "Structured"
+    ],
+    "provider": "OpenAI",
+    "name": "GPT-4O",
+    "description": "Advanced language model with superior reasoning capabilities",
+    "type": "chat"
+  },
+  {
+    "id": "claude-opus-4-1-20250805",
+    "input_price": "$15.00/M",
+    "output_price": "$75.00/M",
+    "context_window": "80,000 tokens",
+    "max_output": "32,000 tokens",
+    "capabilities": [
+      "Vision",
+      "Functions",
+      "Streaming",
+      "Structured"
+    ],
+    "provider": "Anthropic",
+    "name": "Claude Opus 4.1",
+    "description": "Claude Opus 4.1 - Advanced AI model",
+    "type": "chat"
+  },
+  {
+    "id": "claude-sonnet-4-5-20250929",
+    "input_price": "$3.00/M",
+    "output_price": "$15.00/M",
+    "context_window": "200,000 tokens",
+    "max_output": "64,000 tokens",
+    "capabilities": [
+      "Vision",
+      "Functions",
+      "Streaming",
+      "Structured"
+    ],
+    "provider": "Anthropic",
+    "name": "Claude Sonnet 4.5",
+    "description": "Claude Sonnet 4.5 - Advanced AI model",
+    "type": "chat"
+  },
+  {
+    "id": "claude-sonnet-4-20250514",
+    "input_price": "$3.00/M",
+    "output_price": "$15.00/M",
+    "context_window": "128,000 tokens",
+    "max_output": "64,000 tokens",
+    "capabilities": [
+      "Vision",
+      "Functions",
+      "Streaming",
+      "Structured"
+    ],
+    "provider": "Anthropic",
+    "name": "Claude Sonnet 4",
+    "description": "Claude Sonnet 4 - Advanced AI model",
+    "type": "chat"
+  },
+  {
+    "id": "openai-gpt-oss-20b",
+    "input_price": "$0.07/M",
+    "output_price": "$0.30/M",
+    "context_window": "128,000 tokens",
+    "max_output": "128,000 tokens",
+    "capabilities": [
+      "Vision",
+      "Functions",
+      "Streaming",
+      "Structured"
+    ],
+    "provider": "OpenAI",
+    "name": "Openai Gpt Oss 20B",
+    "description": "Advanced language model with superior reasoning capabilities",
+    "type": "chat"
+  },
+  {
+    "id": "llama3.3-70b-instruct",
+    "input_price": "$0.12/M",
+    "output_price": "$0.30/M",
+    "context_window": "131,072 tokens",
+    "max_output": "131,072 tokens",
+    "capabilities": [
+      "Vision",
+      "Functions",
+      "Streaming",
+      "Structured"
+    ],
+    "provider": "Meta",
+    "name": "Llama3.3 70B Instruct",
+    "description": "Open-source large language model",
+    "type": "chat"
+  },
+  {
+    "id": "deepseek-r1-distill-llama-70b",
+    "input_price": "$0.75/M",
+    "output_price": "$0.99/M",
+    "context_window": "128,000 tokens",
+    "max_output": "128,000 tokens",
+    "capabilities": [
+      "Vision",
+      "Functions",
+      "Streaming",
+      "Structured"
+    ],
+    "provider": "Meta",
+    "name": "Deepseek R1 Distill Llama 70B",
+    "description": "Open-source large language model",
+    "type": "chat"
+  },
+  {
+    "id": "alibaba-qwen3-32b",
+    "input_price": "$0.15/M",
+    "output_price": "$0.60/M",
+    "context_window": "131,072 tokens",
+    "max_output": "16,384 tokens",
+    "capabilities": [
+      "Vision",
+      "Functions",
+      "Streaming",
+      "Structured"
+    ],
+    "provider": "Alibaba",
+    "name": "Alibaba Qwen3 32B",
+    "description": "Qwen3 32B - Advanced AI model",
+    "type": "chat"
+  },
+  {
+    "id": "gemini-2.5-pro",
+    "input_price": "$1.25/M",
+    "output_price": "$10.00/M",
+    "context_window": "128,000 tokens",
+    "max_output": "64,000 tokens",
+    "capabilities": [
+      "Vision",
+      "Functions",
+      "Streaming",
+      "Structured"
+    ],
+    "provider": "Google",
+    "name": "Gemini 2.5 Pro",
+    "description": "Gemini 2.5 Pro - Advanced AI model",
+    "type": "chat"
+  },
+  {
+    "id": "claude-opus-4-20250514",
+    "input_price": "$15.00/M",
+    "output_price": "$75.00/M",
+    "context_window": "80,000 tokens",
+    "max_output": "32,000 tokens",
+    "capabilities": [
+      "Vision",
+      "Functions",
+      "Streaming",
+      "Structured"
+    ],
+    "provider": "Anthropic",
+    "name": "Claude Opus 4",
+    "description": "Claude Opus 4 - Advanced AI model",
+    "type": "chat"
+  },
+  {
+    "id": "openai-gpt-oss-120b",
+    "input_price": "$0.15/M",
+    "output_price": "$0.60/M",
+    "context_window": "128,000 tokens",
+    "max_output": "128,000 tokens",
+    "capabilities": [
+      "Vision",
+      "Functions",
+      "Streaming",
+      "Structured"
+    ],
+    "provider": "OpenAI",
+    "name": "Openai Gpt Oss 120B",
+    "description": "Advanced language model with superior reasoning capabilities",
+    "type": "chat"
+  },
+  {
+    "id": "llama3-8b-instruct",
+    "input_price": "$0.30/M",
+    "output_price": "$0.60/M",
+    "context_window": "8,192 tokens",
+    "max_output": "8,192 tokens",
+    "capabilities": [
+      "Vision",
+      "Functions",
+      "Streaming",
+      "Structured"
+    ],
+    "provider": "Meta",
+    "name": "Llama3 8B Instruct",
+    "description": "Open-source large language model",
+    "type": "chat"
+  },
+  {
+    "id": "claude-haiku-4-5-20251001",
+    "input_price": "$1.00/M",
+    "output_price": "$5.00/M",
+    "context_window": "200,000 tokens",
+    "max_output": "32,000 tokens",
+    "capabilities": [
+      "Vision",
+      "Functions",
+      "Streaming",
+      "Structured"
+    ],
+    "provider": "Anthropic",
+    "name": "Claude Haiku 4.5",
+    "description": "Claude Haiku 4.5 - Advanced AI model",
+    "type": "chat"
+  },
+  {
+    "id": "moonshotai/kimi-k2-instruct-0905",
+    "input_price": "$1.00/M",
+    "output_price": "$1.00/M",
+    "context_window": "256,000 tokens",
+    "max_output": "56,000 tokens",
+    "capabilities": [
+      "Vision",
+      "Functions",
+      "Streaming",
+      "Structured"
+    ],
+    "provider": "Moonshot",
+    "name": "Kimi K2 Instruct 0905",
+    "type": "chat"
+  },
+  {
+    "id": "deepseek-ai/deepseek-v3.1-terminus",
+    "input_price": "$1.00/M",
+    "output_price": "$1.00/M",
+    "context_window": "163,840 tokens",
+    "max_output": "56,000 tokens",
+    "capabilities": [
+      "Vision",
+      "Functions",
+      "Streaming",
+      "Structured"
+    ],
+    "provider": "DeepSeek",
+    "name": "Deepseek V3.1 Terminus",
+    "type": "chat"
+  },
+  {
+    "id": "qwen/qwen3-next-80b-a3b-instruct",
+    "input_price": "$1.00/M",
+    "output_price": "$1.00/M",
+    "context_window": "262,144 tokens",
+    "max_output": "16,384 tokens",
+    "capabilities": [
+      "Vision",
+      "Functions",
+      "Streaming",
+      "Structured"
+    ],
+    "provider": "Alibaba",
+    "name": "Qwen3 Next 80B A3B Instruct",
+    "type": "chat"
+  },
+  {
+    "id": "deepseek-ai/deepseek-v3.1",
+    "input_price": "$1.00/M",
+    "output_price": "$1.00/M",
+    "context_window": "128,000 tokens",
+    "max_output": "16,384 tokens",
+    "capabilities": [
+      "Vision",
+      "Functions",
+      "Streaming",
+      "Structured"
+    ],
+    "provider": "DeepSeek",
+    "name": "Deepseek V3.1",
+    "type": "chat"
+  },
+  {
+    "id": "mistralai/mistral-nemotron",
+    "input_price": "$1.00/M",
+    "output_price": "$1.00/M",
+    "context_window": "128,000 tokens",
+    "max_output": "16,384 tokens",
+    "capabilities": [
+      "Vision",
+      "Functions",
+      "Streaming",
+      "Structured"
+    ],
+    "provider": "Mistral AI",
+    "name": "Mistral Nemotron",
+    "description": "High-performance open-source language model",
+    "type": "chat"
+  },
+  {
+    "id": "glm-4.6",
+    "input_price": "$1.00/M",
+    "output_price": "$2.00/M",
+    "context_window": "131,000 tokens",
+    "max_output": "32,000 tokens",
+    "capabilities": [
+      "Vision",
+      "Functions",
+      "Streaming",
+      "Structured"
+    ],
+    "provider": "Zhipu",
+    "name": "Glm 4.6",
+    "description": "glm-4.6 - Advanced AI model",
+    "type": "chat"
+  },
+  {
+    "id": "gemini-2.5-flash",
+    "input_price": "$1.00/M",
+    "output_price": "$1.00/M",
+    "context_window": "196,000 tokens",
+    "max_output": "32,000 tokens",
+    "capabilities": [
+      "Vision",
+      "Functions",
+      "Streaming",
+      "Structured"
+    ],
+    "provider": "Google",
+    "name": "Gemini 2.5 Flash",
+    "description": "gemini-2.5-flash - Advanced AI model",
+    "type": "chat"
+  },
+  {
+    "id": "minimaxai/minimax-m2",
+    "input_price": "$1.00/M",
+    "output_price": "$1.00/M",
+    "context_window": "128,000 tokens",
+    "max_output": "32,000 tokens",
+    "capabilities": [
+      "Vision",
+      "Functions",
+      "Streaming",
+      "Structured"
+    ],
+    "provider": "MiniMax",
+    "name": "Minimax M2",
+    "type": "chat"
+  },
+  {
+    "id": "gpt-5.1",
+    "input_price": "$1.25/M",
+    "output_price": "$10.00/M",
+    "context_window": "128,000 tokens",
+    "max_output": "64,000 tokens",
+    "capabilities": [
+      "Vision",
+      "Functions",
+      "Streaming",
+      "Structured"
+    ],
+    "provider": "OpenAI",
+    "name": "GPT-5.1",
+    "description": "Advanced language model with superior reasoning capabilities",
+    "type": "chat"
+  },
+  {
+    "id": "deepseek-v3.2",
+    "input_price": "$1.25/M",
+    "output_price": "$10.00/M",
+    "context_window": "128,000 tokens",
+    "max_output": "64,000 tokens",
+    "capabilities": [
+      "Vision",
+      "Functions",
+      "Streaming",
+      "Structured"
+    ],
+    "provider": "DeepSeek",
+    "name": "Deepseek V3.2",
+    "description": "deepseek-v3.2 - Advanced AI model",
+    "type": "chat"
+  },
+  {
+    "id": "gemini-3-pro-preview",
+    "input_price": "$4.00/M",
+    "output_price": "$18.00/M",
+    "context_window": "1,000,000 tokens",
+    "max_output": "65,536 tokens",
+    "capabilities": [
+      "Vision",
+      "Functions",
+      "Streaming",
+      "Structured"
+    ],
+    "provider": "Google",
+    "name": "Gemini 3 Pro Preview",
+    "description": "gemini-3-pro-preview - Advanced AI model",
+    "type": "chat"
+  },
+  {
+    "id": "moonshotai/kimi-k2-thinking",
+    "input_price": "$1.00/M",
+    "output_price": "$1.00/M",
+    "context_window": "256,000 tokens",
+    "max_output": "64,000 tokens",
+    "capabilities": [
+      "Vision",
+      "Functions",
+      "Streaming",
+      "Structured"
+    ],
+    "provider": "Moonshot",
+    "name": "Kimi K2 Thinking",
+    "type": "chat"
+  },
+  {
+    "id": "claude-opus-4-5-20251101",
+    "input_price": "$5.00/M",
+    "output_price": "$25.00/M",
+    "context_window": "200,000 tokens",
+    "max_output": "64,000 tokens",
+    "capabilities": [
+      "Vision",
+      "Functions",
+      "Streaming",
+      "Structured"
+    ],
+    "provider": "Anthropic",
+    "name": "Claude Opus 4.5",
+    "description": "Claude opus 4.5 - Advanced AI model",
+    "type": "chat"
+  },
+  {
+    "id": "grok-4.1-fast-reasoning",
+    "input_price": "$1.00/M",
+    "output_price": "$1.00/M",
+    "context_window": "200,000 tokens",
+    "max_output": "64,000 tokens",
+    "capabilities": [
+      "Vision",
+      "Functions",
+      "Streaming",
+      "Structured"
+    ],
+    "provider": "xAI",
+    "name": "Grok 4.1 Fast Reasoning",
+    "description": "grok-4.1-fast-reasoning - Advanced AI model",
+    "type": "chat"
+  },
+  {
+    "id": "grok-4.1-fast-non-reasoning",
+    "input_price": "$1.00/M",
+    "output_price": "$1.00/M",
+    "context_window": "200,000 tokens",
+    "max_output": "64,000 tokens",
+    "capabilities": [
+      "Vision",
+      "Functions",
+      "Streaming",
+      "Structured"
+    ],
+    "provider": "xAI",
+    "name": "Grok 4.1 Fast Non Reasoning",
+    "description": "grok-4.1-fast-non-reasoning - Advanced AI model",
+    "type": "chat"
+  },
+  {
+    "id": "qwen3-coder-480b-a35b-instruct",
+    "input_price": "$1.00/M",
+    "output_price": "$1.00/M",
+    "context_window": "262,144 tokens",
+    "max_output": "64,000 tokens",
+    "capabilities": [
+      "Vision",
+      "Functions",
+      "Streaming",
+      "Structured"
+    ],
+    "provider": "Alibaba",
+    "name": "Qwen3 Coder 480B A35B Instruct",
+    "type": "code"
+  },
+  {
+    "id": "mistral-large-3-675b-instruct-2512",
+    "input_price": "$1.00/M",
+    "output_price": "$1.00/M",
+    "context_window": "262,144 tokens",
+    "max_output": "64,000 tokens",
+    "capabilities": [
+      "Vision",
+      "Functions",
+      "Streaming",
+      "Structured"
+    ],
+    "provider": "Mistral AI",
+    "name": "Mistral Large 3 675B Instruct 2512",
+    "description": "High-performance open-source language model",
+    "type": "chat"
+  }
+]

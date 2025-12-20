@@ -1,0 +1,50 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+.venv/
+pip-log.txt
+pip-delete-this-directory.txt
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Project specific
+*.log
+*.tmp
+*.html
+!docs-site/*.html
+!docs-site/**/*.html
+
+# Temporary files
+*.bak
+*.orig
+
+# Node modules (if any)
+node_modules/
+
+# Build outputs
+dist/
+build/
+
+# Credentials
+*.env
+.env.local
+.env.*.local
