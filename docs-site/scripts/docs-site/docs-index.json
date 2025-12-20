@@ -1,0 +1,80 @@
+{
+  "openai": {
+    "languages": {
+      "en": []
+    },
+    "totalDocs": 0
+  },
+  "anthropic": {
+    "languages": {
+      "en": [],
+      "zh-CN": [],
+      "zh-TW": [],
+      "ja": [],
+      "ko": [],
+      "de": [],
+      "es": [],
+      "fr": [],
+      "it": [],
+      "pt-BR": [],
+      "ru": [],
+      "id": []
+    },
+    "totalDocs": 0
+  },
+  "google": {
+    "languages": {
+      "zh": []
+    },
+    "totalDocs": 0
+  },
+  "meta": {
+    "languages": {
+      "en": []
+    },
+    "totalDocs": 0
+  },
+  "xai": {
+    "languages": {
+      "en": []
+    },
+    "totalDocs": 0
+  },
+  "moonshot": {
+    "languages": {
+      "zh": [],
+      "en": []
+    },
+    "totalDocs": 0
+  },
+  "zhipu": {
+    "languages": {
+      "zh": [],
+      "en": []
+    },
+    "totalDocs": 0
+  },
+  "minimax": {
+    "languages": {
+      "en": [],
+      "zh": []
+    },
+    "totalDocs": 0
+  },
+  "megallm": {
+    "languages": {
+      "en": [],
+      "zh": [],
+      "ru": [],
+      "models": []
+    },
+    "totalDocs": 0
+  },
+  "deepseek": {
+    "languages": {
+      "en": [],
+      "zh": []
+    },
+    "totalDocs": 0
+  }
+}
