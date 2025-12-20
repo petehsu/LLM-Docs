@@ -4,6 +4,14 @@ let agentMode = false;
 let agentMessages = [];
 let isAgentStreaming = false;
 
+// Vercel proxy URL
+const AGENT_VERCEL_PROXY_URL = '/api/proxy';
+
+// Check if running on Vercel (local copy for agent.js)
+function isVercelHost() {
+    return window.location.hostname.includes('vercel.app');
+}
+
 // ============ 增强的 System Prompt ============
 function buildSystemPrompt() {
     // 获取文档统计
@@ -139,6 +147,12 @@ function createAgentButton() {
 function createAgentMessagesContainer() {
     if (document.getElementById('agent-messages-container')) return;
 
+    const searchWrapper = document.querySelector('.search-input-wrapper');
+    if (!searchWrapper) {
+        setTimeout(createAgentMessagesContainer, 200);
+        return;
+    }
+
     const container = document.createElement('div');
     container.id = 'agent-messages-container';
     container.className = 'agent-messages-container';
@@ -146,10 +160,7 @@ function createAgentMessagesContainer() {
         <div class="agent-messages-inner" id="agent-messages"></div>
     `;
 
-    const searchWrapper = document.querySelector('.search-input-wrapper');
-    if (searchWrapper) {
-        searchWrapper.insertBefore(container, searchWrapper.firstChild);
-    }
+    searchWrapper.insertBefore(container, searchWrapper.firstChild);
 }
 
 // Create code panel (右侧悬浮代码面板 - 极简结构)
@@ -174,25 +185,32 @@ function createCodePanel() {
 
 // Toggle Agent mode
 function toggleAgentMode() {
-    agentMode = !agentMode;
-
     const searchInput = document.getElementById('floating-search-input');
     const searchWrapper = document.querySelector('.search-input-wrapper');
     const agentBtn = document.querySelector('.agent-toggle-btn');
-    const messagesContainer = document.getElementById('agent-messages-container');
+    let messagesContainer = document.getElementById('agent-messages-container');
     const searchResults = document.getElementById('search-results-container');
 
+    // 如果消息容器不存在，先创建
+    if (!messagesContainer) {
+        createAgentMessagesContainer();
+        messagesContainer = document.getElementById('agent-messages-container');
+    }
+
     // 空值检查
-    if (!searchWrapper || !agentBtn || !messagesContainer || !searchInput) {
-        console.warn('Agent UI elements not found');
+    if (!searchWrapper || !agentBtn || !searchInput) {
+        console.warn('Agent UI elements not found, retrying...');
+        setTimeout(toggleAgentMode, 200);
         return;
     }
+
+    agentMode = !agentMode;
 
     if (agentMode) {
         // 进入 Agent 模式
         searchWrapper.classList.add('agent-mode');
         agentBtn.classList.add('active');
-        messagesContainer.classList.add('show');
+        if (messagesContainer) messagesContainer.classList.add('show');
 
         // 隐藏搜索结果
         if (searchResults) searchResults.classList.remove('show');
@@ -213,7 +231,7 @@ function toggleAgentMode() {
         // 退出 Agent 模式
         searchWrapper.classList.remove('agent-mode');
         agentBtn.classList.remove('active');
-        messagesContainer.classList.remove('show');
+        if (messagesContainer) messagesContainer.classList.remove('show');
 
         // 恢复搜索功能
         searchInput.placeholder = t('searchPlaceholder');
@@ -336,7 +354,7 @@ async function streamResponse() {
     }
 
     // Check if using Vercel proxy
-    const useVercelProxy = settings.useProxy && typeof isVercel === 'function' && isVercel();
+    const useVercelProxy = settings.useProxy && isVercelHost();
     const useLocalProxy = settings.useProxy && !useVercelProxy;
 
     isAgentStreaming = true;
@@ -368,7 +386,7 @@ async function streamResponse() {
             // Vercel proxy: send request through /api/proxy
             // Note: streaming won't work through proxy, disable it
             body.stream = false;
-            response = await fetch('/api/proxy', {
+            response = await fetch(AGENT_VERCEL_PROXY_URL, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
