@@ -15,6 +15,11 @@ document.addEventListener('DOMContentLoaded', async () => {
     // 初始化主题
     initTheme();
     
+    // 加载配置（厂商、站点配置）
+    if (typeof initConfig === 'function') {
+        await initConfig();
+    }
+    
     // 初始化 Firebase 统计
     if (typeof initFirebaseAnalytics === 'function') {
         initFirebaseAnalytics().then(() => {

@@ -1,0 +1,101 @@
+{
+  "crawlers": [
+    {
+      "id": "openai",
+      "name": "OpenAI Crawler",
+      "script": "download_openai.py",
+      "type": "auto",
+      "enabled": true,
+      "schedule": "daily",
+      "dependencies": ["requests", "beautifulsoup4", "markdownify"]
+    },
+    {
+      "id": "anthropic",
+      "name": "Anthropic Claude Crawler",
+      "script": "download_claude.py",
+      "type": "auto",
+      "enabled": true,
+      "schedule": "daily",
+      "dependencies": ["requests", "beautifulsoup4", "markdownify"]
+    },
+    {
+      "id": "google",
+      "name": "Google Gemini Crawler",
+      "script": "download_gemini.py",
+      "type": "auto",
+      "enabled": true,
+      "schedule": "daily",
+      "dependencies": ["requests", "beautifulsoup4", "markdownify"]
+    },
+    {
+      "id": "meta",
+      "name": "Meta Llama Crawler",
+      "script": "download_meta.py",
+      "type": "auto",
+      "enabled": true,
+      "schedule": "daily",
+      "dependencies": ["requests", "beautifulsoup4", "markdownify"]
+    },
+    {
+      "id": "xai",
+      "name": "xAI Grok Crawler",
+      "script": "download_grok.py",
+      "type": "auto",
+      "enabled": true,
+      "schedule": "daily",
+      "dependencies": ["requests", "beautifulsoup4", "markdownify"]
+    },
+    {
+      "id": "moonshot",
+      "name": "Moonshot Kimi Crawler",
+      "script": "download_moonshot.py",
+      "type": "manual",
+      "enabled": true,
+      "schedule": "manual",
+      "dependencies": ["selenium", "beautifulsoup4"]
+    },
+    {
+      "id": "zhipu",
+      "name": "Zhipu BigModel Crawler",
+      "script": "download_zhipu.py",
+      "type": "manual",
+      "enabled": true,
+      "schedule": "manual",
+      "dependencies": ["selenium", "beautifulsoup4"]
+    },
+    {
+      "id": "minimax",
+      "name": "MiniMax Crawler",
+      "script": "download_minimax.py",
+      "type": "auto",
+      "enabled": true,
+      "schedule": "daily",
+      "dependencies": ["requests", "beautifulsoup4", "markdownify"]
+    },
+    {
+      "id": "megallm",
+      "name": "MegaLLM Crawler",
+      "script": "download_megallm.py",
+      "type": "auto",
+      "enabled": true,
+      "schedule": "daily",
+      "dependencies": ["requests", "beautifulsoup4", "markdownify"]
+    },
+    {
+      "id": "deepseek",
+      "name": "DeepSeek Crawler",
+      "script": "download_deepseek.py",
+      "type": "manual",
+      "enabled": true,
+      "schedule": "manual",
+      "dependencies": ["selenium", "beautifulsoup4"]
+    }
+  ],
+  "settings": {
+    "outputDir": "data/docs",
+    "logDir": "data/logs",
+    "timeout": 30,
+    "retries": 3,
+    "userAgent": "LLM-Docs-Crawler/1.0"
+  }
+}
