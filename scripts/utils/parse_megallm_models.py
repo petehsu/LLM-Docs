@@ -8,7 +8,7 @@ import json
 from pathlib import Path
 from bs4 import BeautifulSoup
 
-HTML_FILE = "模型列表/MegaLLM - 70+ LLMs, One API _ AI Gateway for Developers.html"
+HTML_FILE = "model-list/megallm-models.html"
 OUTPUT_DIR = "MegaLLM/models"
 
 

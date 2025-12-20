@@ -181,14 +181,19 @@ function renderDocList(vendor, langCode) {
 
 // 渲染模型网格（MegaLLM 专用）
 async function renderModelsGrid(container, vendor, docs) {
+    // 显示加载状态
+    container.innerHTML = `<div class="loading-models"><span class="spinner"></span> Loading models...</div>`;
+    
     const modelsByProvider = {};
     
-    for (const doc of docs) {
-        if (doc.name === 'README.md') continue;
-        
+    // 过滤掉 README
+    const modelDocs = docs.filter(doc => doc.name !== 'README.md');
+    
+    // 并行请求所有模型文件
+    const fetchPromises = modelDocs.map(async (doc) => {
         try {
             const response = await fetch(`docs/${vendor.folder}/models/${doc.path}`);
-            if (!response.ok) continue;
+            if (!response.ok) return null;
             
             const content = await response.text();
             const providerMatch = content.match(/>\s*Provider:\s*(\w+)/);
@@ -199,22 +204,34 @@ async function renderModelsGrid(container, vendor, docs) {
             const outputPriceMatch = content.match(/Output\s*\|\s*\$?([\d.]+)/);
             const contextMatch = content.match(/Context Window\s*\|\s*([\d,]+)/);
             
-            if (!modelsByProvider[provider]) {
-                modelsByProvider[provider] = [];
-            }
-            
-            modelsByProvider[provider].push({
-                name: doc.title || doc.name.replace('.md', ''),
-                path: doc.path,
-                modelId: modelId,
-                inputPrice: inputPriceMatch ? inputPriceMatch[1] : '-',
-                outputPrice: outputPriceMatch ? outputPriceMatch[1] : '-',
-                context: contextMatch ? contextMatch[1] : '-'
-            });
+            return {
+                provider,
+                model: {
+                    name: doc.title || doc.name.replace('.md', ''),
+                    path: doc.path,
+                    modelId: modelId,
+                    inputPrice: inputPriceMatch ? inputPriceMatch[1] : '-',
+                    outputPrice: outputPriceMatch ? outputPriceMatch[1] : '-',
+                    context: contextMatch ? contextMatch[1] : '-'
+                }
+            };
         } catch (e) {
             console.log('Error parsing model:', doc.name, e);
+            return null;
         }
-    }
+    });
+    
+    // 等待所有请求完成
+    const results = await Promise.all(fetchPromises);
+    
+    // 按 provider 分组
+    results.forEach(result => {
+        if (!result) return;
+        if (!modelsByProvider[result.provider]) {
+            modelsByProvider[result.provider] = [];
+        }
+        modelsByProvider[result.provider].push(result.model);
+    });
     
     const providerOrder = ['OpenAI', 'Anthropic', 'Google', 'Meta', 'DeepSeek', 'Alibaba', 'Mistral AI', 'Moonshot', 'Zhipu', 'MiniMax', 'xAI', 'Other'];
     const sortedProviders = Object.keys(modelsByProvider).sort((a, b) => {
