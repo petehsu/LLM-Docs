@@ -1,34 +1,34 @@
 {
   "grok": {
-    "lastCrawl": 1768919507.214883,
-    "lastCrawlTime": "2026-01-20T14:31:47.214883",
-    "success": true,
-    "error": null,
-    "auto": true,
-    "duration": 0.15,
-    "docCount": 443
-  },
-  "megallm": {
-    "lastCrawl": 1768919507.37358,
-    "lastCrawlTime": "2026-01-20T14:31:47.373580",
+    "lastCrawl": 1768967078.025096,
+    "lastCrawlTime": "2026-01-21T03:44:38.025096",
     "success": true,
     "error": null,
     "auto": true,
     "duration": 0.11,
     "docCount": 443
   },
-  "minimax": {
-    "lastCrawl": 1768919507.491957,
-    "lastCrawlTime": "2026-01-20T14:31:47.491957",
+  "megallm": {
+    "lastCrawl": 1768967078.14664,
+    "lastCrawlTime": "2026-01-21T03:44:38.146640",
     "success": true,
     "error": null,
     "auto": true,
-    "duration": 8.13,
+    "duration": 0.12,
+    "docCount": 443
+  },
+  "minimax": {
+    "lastCrawl": 1768967078.276761,
+    "lastCrawlTime": "2026-01-21T03:44:38.276761",
+    "success": true,
+    "error": null,
+    "auto": true,
+    "duration": 8.14,
     "docCount": 443
   },
   "zhipu": {
-    "lastCrawl": 1768919515.634995,
-    "lastCrawlTime": "2026-01-20T14:31:55.634995",
+    "lastCrawl": 1768967086.424257,
+    "lastCrawlTime": "2026-01-21T03:44:46.424257",
     "success": true,
     "error": null,
     "auto": true,
@@ -36,21 +36,21 @@
     "docCount": 443
   },
   "claude": {
-    "lastCrawl": 1768919519.766817,
-    "lastCrawlTime": "2026-01-20T14:31:59.766817",
+    "lastCrawl": 1768967090.558063,
+    "lastCrawlTime": "2026-01-21T03:44:50.558063",
     "success": true,
     "error": null,
     "auto": true,
-    "duration": 205.6,
+    "duration": 205.8,
     "docCount": 443
   },
   "gemini": {
-    "lastCrawl": 1768919725.38858,
-    "lastCrawlTime": "2026-01-20T14:35:25.388580",
+    "lastCrawl": 1768967296.378871,
+    "lastCrawlTime": "2026-01-21T03:48:16.378871",
     "success": true,
     "error": null,
     "auto": true,
-    "duration": 21.22,
+    "duration": 21.23,
     "docCount": 443
   }
 }
