@@ -1,56 +1,56 @@
 {
   "grok": {
-    "lastCrawl": 1772462495.783061,
-    "lastCrawlTime": "2026-03-02T14:41:35.783061",
-    "success": true,
-    "error": null,
-    "auto": true,
-    "duration": 0.13,
-    "docCount": 443
-  },
-  "megallm": {
-    "lastCrawl": 1772462495.932865,
-    "lastCrawlTime": "2026-03-02T14:41:35.932865",
+    "lastCrawl": 1772511302.857036,
+    "lastCrawlTime": "2026-03-03T04:15:02.857036",
     "success": true,
     "error": null,
     "auto": true,
     "duration": 0.12,
     "docCount": 443
   },
-  "minimax": {
-    "lastCrawl": 1772462496.060806,
-    "lastCrawlTime": "2026-03-02T14:41:36.060806",
+  "megallm": {
+    "lastCrawl": 1772511302.992926,
+    "lastCrawlTime": "2026-03-03T04:15:02.992926",
     "success": true,
     "error": null,
     "auto": true,
-    "duration": 8.14,
+    "duration": 0.11,
+    "docCount": 443
+  },
+  "minimax": {
+    "lastCrawl": 1772511303.118071,
+    "lastCrawlTime": "2026-03-03T04:15:03.118071",
+    "success": true,
+    "error": null,
+    "auto": true,
+    "duration": 8.15,
     "docCount": 443
   },
   "zhipu": {
-    "lastCrawl": 1772462504.217858,
-    "lastCrawlTime": "2026-03-02T14:41:44.217858",
+    "lastCrawl": 1772511311.285654,
+    "lastCrawlTime": "2026-03-03T04:15:11.285654",
     "success": true,
     "error": null,
     "auto": true,
-    "duration": 4.13,
+    "duration": 4.14,
     "docCount": 443
   },
   "claude": {
-    "lastCrawl": 1772462508.358395,
-    "lastCrawlTime": "2026-03-02T14:41:48.358395",
+    "lastCrawl": 1772511315.437979,
+    "lastCrawlTime": "2026-03-03T04:15:15.437979",
     "success": true,
     "error": null,
     "auto": true,
-    "duration": 205.9,
+    "duration": 205.85,
     "docCount": 443
   },
   "gemini": {
-    "lastCrawl": 1772462714.283712,
-    "lastCrawlTime": "2026-03-02T14:45:14.283712",
+    "lastCrawl": 1772511521.309295,
+    "lastCrawlTime": "2026-03-03T04:18:41.309295",
     "success": true,
     "error": null,
     "auto": true,
-    "duration": 21.24,
+    "duration": 21.23,
     "docCount": 443
   }
 }
