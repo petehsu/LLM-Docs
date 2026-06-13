@@ -110,6 +110,15 @@ VENDORS = [
             {'code': 'zh', 'folder': '简体中文'}
         ]
     },
+    {
+        'id': 'mimo',
+        'name': 'Xiaomi MiMo',
+        'folder': 'Xiaomi MiMo',
+        'languages': [
+            {'code': 'zh-CN', 'folder': '简体中文'},
+            {'code': 'en-US', 'folder': 'English'}
+        ]
+    },
 ]
 
 SITE_DIR = 'docs-site'

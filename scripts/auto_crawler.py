@@ -95,6 +95,13 @@ CRAWLERS = [
         'auto': False,
         'interval': 86400,
     },
+    {
+        'id': 'mimo',
+        'name': 'Xiaomi MiMo',
+        'script': 'download_mimo.py',
+        'auto': False,
+        'interval': 86400,
+    },
 ]
 
 STATUS_FILE = 'data/crawl-status.json'
@@ -204,6 +211,7 @@ def add_headers_to_new_docs(vendor_id, crawl_time):
         'zhipu_en': 'BigModel Zhipu',
         'meta': 'Meta Llama',
         'deepseek': 'DeepSeek',
+        'mimo': 'Xiaomi MiMo',
     }
     
     dir_name = vendor_dir_map.get(vendor_id)

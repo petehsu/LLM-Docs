@@ -53,6 +53,7 @@
 | MiniMax | 84 | Chinese, English | Auto |
 | MegaLLM | 120 | English, Chinese, Russian | Auto |
 | DeepSeek | 61 | Chinese, English | Manual |
+| Xiaomi MiMo | 65 | Chinese, English | Manual |
 
 ## 🚀 Quick Start
 
@@ -117,6 +118,7 @@ pip install mcp
 ├── MiniMax/                # MiniMax docs
 ├── MegaLLM/                # MegaLLM docs
 ├── DeepSeek/               # DeepSeek docs
+├── Xiaomi MiMo/             # MiMo docs
 ├── mcp_server.py           # MCP server
 ├── build_docs_site.py      # Site builder
 └── download_*.py           # Crawler scripts

@@ -7,7 +7,11 @@
       "type": "auto",
       "enabled": true,
       "schedule": "daily",
-      "dependencies": ["requests", "beautifulsoup4", "markdownify"]
+      "dependencies": [
+        "requests",
+        "beautifulsoup4",
+        "markdownify"
+      ]
     },
     {
       "id": "anthropic",
@@ -16,7 +20,11 @@
       "type": "auto",
       "enabled": true,
       "schedule": "daily",
-      "dependencies": ["requests", "beautifulsoup4", "markdownify"]
+      "dependencies": [
+        "requests",
+        "beautifulsoup4",
+        "markdownify"
+      ]
     },
     {
       "id": "google",
@@ -25,7 +33,11 @@
       "type": "auto",
       "enabled": true,
       "schedule": "daily",
-      "dependencies": ["requests", "beautifulsoup4", "markdownify"]
+      "dependencies": [
+        "requests",
+        "beautifulsoup4",
+        "markdownify"
+      ]
     },
     {
       "id": "meta",
@@ -34,7 +46,11 @@
       "type": "auto",
       "enabled": true,
       "schedule": "daily",
-      "dependencies": ["requests", "beautifulsoup4", "markdownify"]
+      "dependencies": [
+        "requests",
+        "beautifulsoup4",
+        "markdownify"
+      ]
     },
     {
       "id": "xai",
@@ -43,7 +59,11 @@
       "type": "auto",
       "enabled": true,
       "schedule": "daily",
-      "dependencies": ["requests", "beautifulsoup4", "markdownify"]
+      "dependencies": [
+        "requests",
+        "beautifulsoup4",
+        "markdownify"
+      ]
     },
     {
       "id": "moonshot",
@@ -52,7 +72,10 @@
       "type": "manual",
       "enabled": true,
       "schedule": "manual",
-      "dependencies": ["selenium", "beautifulsoup4"]
+      "dependencies": [
+        "selenium",
+        "beautifulsoup4"
+      ]
     },
     {
       "id": "zhipu",
@@ -61,7 +84,10 @@
       "type": "manual",
       "enabled": true,
       "schedule": "manual",
-      "dependencies": ["selenium", "beautifulsoup4"]
+      "dependencies": [
+        "selenium",
+        "beautifulsoup4"
+      ]
     },
     {
       "id": "minimax",
@@ -70,7 +96,11 @@
       "type": "auto",
       "enabled": true,
       "schedule": "daily",
-      "dependencies": ["requests", "beautifulsoup4", "markdownify"]
+      "dependencies": [
+        "requests",
+        "beautifulsoup4",
+        "markdownify"
+      ]
     },
     {
       "id": "megallm",
@@ -79,7 +109,11 @@
       "type": "auto",
       "enabled": true,
       "schedule": "daily",
-      "dependencies": ["requests", "beautifulsoup4", "markdownify"]
+      "dependencies": [
+        "requests",
+        "beautifulsoup4",
+        "markdownify"
+      ]
     },
     {
       "id": "deepseek",
@@ -88,7 +122,23 @@
       "type": "manual",
       "enabled": true,
       "schedule": "manual",
-      "dependencies": ["selenium", "beautifulsoup4"]
+      "dependencies": [
+        "selenium",
+        "beautifulsoup4"
+      ]
+    },
+    {
+      "id": "mimo",
+      "name": "Xiaomi MiMo Crawler",
+      "script": "download_mimo.py",
+      "type": "manual",
+      "enabled": true,
+      "schedule": "manual",
+      "dependencies": [
+        "selenium",
+        "beautifulsoup4",
+        "html2text"
+      ]
     }
   ],
   "settings": {

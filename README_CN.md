@@ -49,6 +49,7 @@
 | MiniMax | 84 | 中文、英文 | 自动 |
 | MegaLLM | 120 | 英文、中文、俄文 | 自动 |
 | DeepSeek | 61 | 中文、英文 | 手动 |
+| 小米 MiMo | 65 | 中文, English | 手动 |
 
 ## 🚀 快速开始
 
@@ -319,6 +320,7 @@ Anthropic Claude/
 | Moonshot、Meta、智谱英文站 | `playwright markdownify` |
 | OpenAI | `undetected-chromedriver selenium markdownify` |
 | DeepSeek | `selenium html2text` |
+| 小米 MiMo | 65 | 中文, English | 手动 |
 
 ## 📝 文件说明
 
@@ -334,6 +336,7 @@ Anthropic Claude/
 | `download_meta.py` | Meta Llama 下载脚本 |
 | `download_megallm.py` | MegaLLM 下载脚本 |
 | `download_deepseek.py` | DeepSeek 下载脚本 |
+| 小米 MiMo | 65 | 中文, English | 手动 |
 | `build_docs_site.py` | 文档网站构建脚本 |
 | `mcp_server.py` | MCP 服务器 |
 

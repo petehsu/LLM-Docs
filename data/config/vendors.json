@@ -11,7 +11,11 @@
       },
       "folder": "OpenAI/docs",
       "languages": [
-        { "code": "en", "name": "English", "folder": "" }
+        {
+          "code": "en",
+          "name": "English",
+          "folder": ""
+        }
       ]
     },
     {
@@ -25,18 +29,66 @@
       },
       "folder": "Anthropic Claude",
       "languages": [
-        { "code": "en", "name": "English", "folder": "English" },
-        { "code": "zh-CN", "name": "简体中文", "folder": "简体中文" },
-        { "code": "zh-TW", "name": "繁體中文", "folder": "繁體中文" },
-        { "code": "ja", "name": "日本語", "folder": "日本語" },
-        { "code": "ko", "name": "한국어", "folder": "한국어" },
-        { "code": "de", "name": "Deutsch", "folder": "Deutsch" },
-        { "code": "es", "name": "Español", "folder": "Español" },
-        { "code": "fr", "name": "Français", "folder": "Français" },
-        { "code": "it", "name": "Italiano", "folder": "Italiano" },
-        { "code": "pt-BR", "name": "Português", "folder": "Português" },
-        { "code": "ru", "name": "Русский", "folder": "Русский" },
-        { "code": "id", "name": "Indonesia", "folder": "Indonesia" }
+        {
+          "code": "en",
+          "name": "English",
+          "folder": "English"
+        },
+        {
+          "code": "zh-CN",
+          "name": "简体中文",
+          "folder": "简体中文"
+        },
+        {
+          "code": "zh-TW",
+          "name": "繁體中文",
+          "folder": "繁體中文"
+        },
+        {
+          "code": "ja",
+          "name": "日本語",
+          "folder": "日本語"
+        },
+        {
+          "code": "ko",
+          "name": "한국어",
+          "folder": "한국어"
+        },
+        {
+          "code": "de",
+          "name": "Deutsch",
+          "folder": "Deutsch"
+        },
+        {
+          "code": "es",
+          "name": "Español",
+          "folder": "Español"
+        },
+        {
+          "code": "fr",
+          "name": "Français",
+          "folder": "Français"
+        },
+        {
+          "code": "it",
+          "name": "Italiano",
+          "folder": "Italiano"
+        },
+        {
+          "code": "pt-BR",
+          "name": "Português",
+          "folder": "Português"
+        },
+        {
+          "code": "ru",
+          "name": "Русский",
+          "folder": "Русский"
+        },
+        {
+          "code": "id",
+          "name": "Indonesia",
+          "folder": "Indonesia"
+        }
       ]
     },
     {
@@ -50,7 +102,11 @@
       },
       "folder": "Google Gemini/docs",
       "languages": [
-        { "code": "zh", "name": "中文", "folder": "" }
+        {
+          "code": "zh",
+          "name": "中文",
+          "folder": ""
+        }
       ]
     },
     {
@@ -64,7 +120,11 @@
       },
       "folder": "Meta Llama/docs",
       "languages": [
-        { "code": "en", "name": "English", "folder": "" }
+        {
+          "code": "en",
+          "name": "English",
+          "folder": ""
+        }
       ]
     },
     {
@@ -78,7 +138,11 @@
       },
       "folder": "X Grok/docs",
       "languages": [
-        { "code": "en", "name": "English", "folder": "" }
+        {
+          "code": "en",
+          "name": "English",
+          "folder": ""
+        }
       ]
     },
     {
@@ -92,8 +156,16 @@
       },
       "folder": "Moonshot Kimi",
       "languages": [
-        { "code": "zh", "name": "简体中文", "folder": "简体中文" },
-        { "code": "en", "name": "English", "folder": "English" }
+        {
+          "code": "zh",
+          "name": "简体中文",
+          "folder": "简体中文"
+        },
+        {
+          "code": "en",
+          "name": "English",
+          "folder": "English"
+        }
       ]
     },
     {
@@ -107,8 +179,16 @@
       },
       "folder": "BigModel Zhipu",
       "languages": [
-        { "code": "zh", "name": "简体中文", "folder": "docs" },
-        { "code": "en", "name": "English", "folder": "English" }
+        {
+          "code": "zh",
+          "name": "简体中文",
+          "folder": "docs"
+        },
+        {
+          "code": "en",
+          "name": "English",
+          "folder": "English"
+        }
       ]
     },
     {
@@ -122,8 +202,16 @@
       },
       "folder": "MiniMax",
       "languages": [
-        { "code": "en", "name": "English", "folder": "English" },
-        { "code": "zh", "name": "简体中文", "folder": "简体中文" }
+        {
+          "code": "en",
+          "name": "English",
+          "folder": "English"
+        },
+        {
+          "code": "zh",
+          "name": "简体中文",
+          "folder": "简体中文"
+        }
       ]
     },
     {
@@ -137,10 +225,26 @@
       },
       "folder": "MegaLLM",
       "languages": [
-        { "code": "en", "name": "English", "folder": "English" },
-        { "code": "zh", "name": "简体中文", "folder": "简体中文" },
-        { "code": "ru", "name": "Русский", "folder": "Русский" },
-        { "code": "models", "name": "Models", "folder": "models" }
+        {
+          "code": "en",
+          "name": "English",
+          "folder": "English"
+        },
+        {
+          "code": "zh",
+          "name": "简体中文",
+          "folder": "简体中文"
+        },
+        {
+          "code": "ru",
+          "name": "Русский",
+          "folder": "Русский"
+        },
+        {
+          "code": "models",
+          "name": "Models",
+          "folder": "models"
+        }
       ]
     },
     {
@@ -154,8 +258,39 @@
       },
       "folder": "DeepSeek",
       "languages": [
-        { "code": "en", "name": "English", "folder": "English" },
-        { "code": "zh", "name": "简体中文", "folder": "简体中文" }
+        {
+          "code": "en",
+          "name": "English",
+          "folder": "English"
+        },
+        {
+          "code": "zh",
+          "name": "简体中文",
+          "folder": "简体中文"
+        }
+      ]
+    },
+    {
+      "id": "mimo",
+      "name": "Xiaomi MiMo",
+      "logo": "logos/mimo.svg",
+      "desc": {
+        "en": "MiMo series models",
+        "zh": "MiMo 系列模型",
+        "ja": "MiMo シリーズモデル"
+      },
+      "folder": "Xiaomi MiMo",
+      "languages": [
+        {
+          "code": "zh-CN",
+          "name": "简体中文",
+          "folder": "简体中文"
+        },
+        {
+          "code": "en-US",
+          "name": "English",
+          "folder": "English"
+        }
       ]
     }
   ]
