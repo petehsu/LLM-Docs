@@ -1,56 +1,56 @@
 {
   "grok": {
-    "lastCrawl": 1783526481.222915,
-    "lastCrawlTime": "2026-07-08T16:01:21.222915",
+    "lastCrawl": 1783577090.044807,
+    "lastCrawlTime": "2026-07-09T06:04:50.044807",
+    "success": true,
+    "error": null,
+    "auto": true,
+    "duration": 0.22,
+    "docCount": 443
+  },
+  "megallm": {
+    "lastCrawl": 1783577090.277904,
+    "lastCrawlTime": "2026-07-09T06:04:50.277904",
     "success": true,
     "error": null,
     "auto": true,
     "duration": 0.12,
     "docCount": 443
   },
-  "megallm": {
-    "lastCrawl": 1783526481.352841,
-    "lastCrawlTime": "2026-07-08T16:01:21.352841",
-    "success": true,
-    "error": null,
-    "auto": true,
-    "duration": 0.11,
-    "docCount": 443
-  },
   "minimax": {
-    "lastCrawl": 1783526481.47265,
-    "lastCrawlTime": "2026-07-08T16:01:21.472650",
+    "lastCrawl": 1783577090.411082,
+    "lastCrawlTime": "2026-07-09T06:04:50.411082",
     "success": true,
     "error": null,
     "auto": true,
-    "duration": 8.14,
+    "duration": 8.15,
     "docCount": 443
   },
   "zhipu": {
-    "lastCrawl": 1783526489.62604,
-    "lastCrawlTime": "2026-07-08T16:01:29.626040",
+    "lastCrawl": 1783577098.577678,
+    "lastCrawlTime": "2026-07-09T06:04:58.577678",
     "success": true,
     "error": null,
     "auto": true,
-    "duration": 4.12,
+    "duration": 4.14,
     "docCount": 443
   },
   "claude": {
-    "lastCrawl": 1783526493.759667,
-    "lastCrawlTime": "2026-07-08T16:01:33.759667",
+    "lastCrawl": 1783577102.728401,
+    "lastCrawlTime": "2026-07-09T06:05:02.728401",
     "success": true,
     "error": null,
     "auto": true,
-    "duration": 205.63,
+    "duration": 205.87,
     "docCount": 443
   },
   "gemini": {
-    "lastCrawl": 1783526699.4134,
-    "lastCrawlTime": "2026-07-08T16:04:59.413400",
+    "lastCrawl": 1783577308.621749,
+    "lastCrawlTime": "2026-07-09T06:08:28.621749",
     "success": true,
     "error": null,
     "auto": true,
-    "duration": 21.22,
+    "duration": 21.25,
     "docCount": 443
   }
 }
