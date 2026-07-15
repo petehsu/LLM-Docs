@@ -1,56 +1,56 @@
 {
   "grok": {
-    "lastCrawl": 1784042560.40174,
-    "lastCrawlTime": "2026-07-14T15:22:40.401740",
+    "lastCrawl": 1784091110.350327,
+    "lastCrawlTime": "2026-07-15T04:51:50.350327",
     "success": true,
     "error": null,
     "auto": true,
-    "duration": 0.15,
+    "duration": 0.12,
     "docCount": 443
   },
   "megallm": {
-    "lastCrawl": 1784042560.563935,
-    "lastCrawlTime": "2026-07-14T15:22:40.563935",
+    "lastCrawl": 1784091110.478126,
+    "lastCrawlTime": "2026-07-15T04:51:50.478126",
     "success": true,
     "error": null,
     "auto": true,
-    "duration": 0.09,
+    "duration": 0.12,
     "docCount": 443
   },
   "minimax": {
-    "lastCrawl": 1784042560.665762,
-    "lastCrawlTime": "2026-07-14T15:22:40.665762",
+    "lastCrawl": 1784091110.605456,
+    "lastCrawlTime": "2026-07-15T04:51:50.605456",
     "success": true,
     "error": null,
     "auto": true,
-    "duration": 8.11,
+    "duration": 8.14,
     "docCount": 443
   },
   "zhipu": {
-    "lastCrawl": 1784042568.786058,
-    "lastCrawlTime": "2026-07-14T15:22:48.786058",
+    "lastCrawl": 1784091118.756276,
+    "lastCrawlTime": "2026-07-15T04:51:58.756276",
     "success": true,
     "error": null,
     "auto": true,
-    "duration": 4.1,
+    "duration": 4.12,
     "docCount": 443
   },
   "claude": {
-    "lastCrawl": 1784042572.927561,
-    "lastCrawlTime": "2026-07-14T15:22:52.927561",
+    "lastCrawl": 1784091122.89285,
+    "lastCrawlTime": "2026-07-15T04:52:02.892850",
     "success": true,
     "error": null,
     "auto": true,
-    "duration": 205.5,
+    "duration": 205.65,
     "docCount": 443
   },
   "gemini": {
-    "lastCrawl": 1784042778.534691,
-    "lastCrawlTime": "2026-07-14T15:26:18.534691",
+    "lastCrawl": 1784091328.56844,
+    "lastCrawlTime": "2026-07-15T04:55:28.568440",
     "success": true,
     "error": null,
     "auto": true,
-    "duration": 21.19,
+    "duration": 21.23,
     "docCount": 443
   }
 }
