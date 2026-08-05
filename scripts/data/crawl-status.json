@@ -1,34 +1,34 @@
 {
   "grok": {
-    "lastCrawl": 1785906887.020405,
-    "lastCrawlTime": "2026-08-05T05:14:47.020405",
-    "success": true,
-    "error": null,
-    "auto": true,
-    "duration": 0.2,
-    "docCount": 443
-  },
-  "megallm": {
-    "lastCrawl": 1785906887.232889,
-    "lastCrawlTime": "2026-08-05T05:14:47.232889",
+    "lastCrawl": 1785945628.019383,
+    "lastCrawlTime": "2026-08-05T16:00:28.019383",
     "success": true,
     "error": null,
     "auto": true,
     "duration": 0.12,
     "docCount": 443
   },
-  "minimax": {
-    "lastCrawl": 1785906887.364181,
-    "lastCrawlTime": "2026-08-05T05:14:47.364181",
+  "megallm": {
+    "lastCrawl": 1785945628.148169,
+    "lastCrawlTime": "2026-08-05T16:00:28.148169",
     "success": true,
     "error": null,
     "auto": true,
-    "duration": 8.16,
+    "duration": 0.11,
+    "docCount": 443
+  },
+  "minimax": {
+    "lastCrawl": 1785945628.277043,
+    "lastCrawlTime": "2026-08-05T16:00:28.277043",
+    "success": true,
+    "error": null,
+    "auto": true,
+    "duration": 8.14,
     "docCount": 443
   },
   "zhipu": {
-    "lastCrawl": 1785906895.532362,
-    "lastCrawlTime": "2026-08-05T05:14:55.532362",
+    "lastCrawl": 1785945636.432344,
+    "lastCrawlTime": "2026-08-05T16:00:36.432344",
     "success": true,
     "error": null,
     "auto": true,
@@ -36,21 +36,21 @@
     "docCount": 443
   },
   "claude": {
-    "lastCrawl": 1785906899.676827,
-    "lastCrawlTime": "2026-08-05T05:14:59.676827",
+    "lastCrawl": 1785945640.574303,
+    "lastCrawlTime": "2026-08-05T16:00:40.574303",
     "success": true,
     "error": null,
     "auto": true,
-    "duration": 206.06,
+    "duration": 205.83,
     "docCount": 443
   },
   "gemini": {
-    "lastCrawl": 1785907105.760704,
-    "lastCrawlTime": "2026-08-05T05:18:25.760704",
+    "lastCrawl": 1785945846.429537,
+    "lastCrawlTime": "2026-08-05T16:04:06.429537",
     "success": true,
     "error": null,
     "auto": true,
-    "duration": 21.26,
+    "duration": 21.24,
     "docCount": 443
   }
 }
